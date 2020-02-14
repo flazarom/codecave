@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TutorialesComponent } from './tutoriales/tutoriales.component';
 import { PreguntasComponent } from './preguntas/preguntas.component';
 import { SnippetsComponent } from './snippets/snippets.component';
+import { PortalComponent } from './portal/portal.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SnippetsComponent } from './snippets/snippets.component';
     NavbarComponent,
     TutorialesComponent,
     PreguntasComponent,
-    SnippetsComponent
+    SnippetsComponent,
+    PortalComponent
   ],
   imports: [
     BrowserModule,
