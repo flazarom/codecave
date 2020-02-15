@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-snippets',
   templateUrl: './snippets.component.html',
-  styleUrls: ['./snippets.component.css']
+  styleUrls: ['./../../../app.component.css','./snippets.component.css']
 })
 export class SnippetsComponent implements OnInit {
 

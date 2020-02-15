@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between bg-dark">
+    <button [ngClass]="{'active' : oTutoriales==true}"  class="btn btn-dark nav-button-4" (click)="mostrarTutoriales()">
+      <a class="nav-link " href="#">Tutoriales</a>
+    </button>
+    <button [ngClass]="{'active' : oPreguntas==true}" class="btn btn-dark nav-button-4" (click)="mostrarPreguntas()">
+      <a class="nav-link" href="#">Preguntas</a>
+    </button>
+    <button [ngClass]="{'active' : oSnippets==true}" class="btn btn-dark nav-button-4" (click)="mostrarSnippets()">
+      <a class=" nav-link" href="#">Snippets</a>
+    </button>
+  </div>
+
+  <div  id="tutoriales" *ngIf="oTutoriales == true">
+    <app-tutoriales></app-tutoriales>
+  </div>
+  <div class="section" *ngIf="oPreguntas == true">
+    <app-preguntas></app-preguntas>
+  </div>
+  <div class="section" *ngIf="oSnippets == true">
+    <app-snippets></app-snippets>
+  </div>
+  <div class="empty-img" *ngIf="empty == true">
+    <app-empty></app-empty>     
+  </div>
+
