@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { TutorialesComponent } from './tutoriales/tutoriales.component';
-import { PreguntasComponent } from './preguntas/preguntas.component';
-import { SnippetsComponent } from './snippets/snippets.component';
-import { PortalComponent } from './portal/portal.component';
+import { TutorialesComponent } from './components/secciones/tutoriales/tutoriales.component';
+import { PreguntasComponent } from './components/secciones/preguntas/preguntas.component';
+import { SnippetsComponent } from './components/secciones/snippets/snippets.component';
+import { EmptyComponent } from './components/empty/empty.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +16,8 @@ import { PortalComponent } from './portal/portal.component';
     TutorialesComponent,
     PreguntasComponent,
     SnippetsComponent,
-    PortalComponent
-  ],
+    EmptyComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule
