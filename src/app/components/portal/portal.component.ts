@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-portal',
   templateUrl: './portal.component.html',
-  styleUrls: ['./../app.component.css','./portal.component.css']
+  styleUrls: ['./../../app.component.css','./portal.component.css']
 })
 export class PortalComponent implements OnInit {
 

@@ -2,13 +2,13 @@
   .sm {
     display: none;
   }
-} 
+}
 
 @media (max-width: 770px) {
   .md-lg {
     display: none;
   }
-} 
+}
 
 .search {
   display: block;
@@ -18,5 +18,6 @@
   display: inline-block;
 }
 
-
-
+.modal-content {
+  background-color: #32383e;
+}

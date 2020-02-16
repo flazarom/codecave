@@ -8,7 +8,7 @@ import { TutorialesComponent } from './components/secciones/tutoriales/tutoriale
 import { PreguntasComponent } from './components/secciones/preguntas/preguntas.component';
 import { SnippetsComponent } from './components/secciones/snippets/snippets.component';
 import { EmptyComponent } from './components/empty/empty.component';
-import { PortalComponent } from './portal/portal.component';
+import { PortalComponent } from './components/portal/portal.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +18,11 @@ import { PortalComponent } from './portal/portal.component';
     PreguntasComponent,
     SnippetsComponent,
     EmptyComponent,
-    PortalComponent
+    PortalComponent,
     ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
