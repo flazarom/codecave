@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cavecode": {
+    "codecave": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cavecode",
+            "outputPath": "dist/codecave",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cavecode:build"
+            "browserTarget": "codecave:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cavecode:build:production"
+              "browserTarget": "codecave:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cavecode:build"
+            "browserTarget": "codecave:build"
           }
         },
         "test": {
@@ -115,18 +115,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "cavecode:serve"
+            "devServerTarget": "codecave:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "cavecode:serve:production"
+              "devServerTarget": "codecave:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "cavecode",
+  "defaultProject": "codecave",
   "cli": {
     "analytics": "c209dc66-1b53-4579-86ec-1fc5c132d6aa"
   }

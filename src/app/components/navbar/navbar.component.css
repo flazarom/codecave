@@ -1,0 +1,22 @@
+@media (min-width: 770px) {
+  .sm {
+    display: none;
+  }
+} 
+
+@media (max-width: 770px) {
+  .md-lg {
+    display: none;
+  }
+} 
+
+.search {
+  display: block;
+}
+
+.search input,button{
+  display: inline-block;
+}
+
+
+
