@@ -1,4 +1,9 @@
+import { AppRoutingModule } from './../../app-routing.module';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth, app } from 'firebase/app';
+import { AotCompiler } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,13 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() {
-    
-   }
+  constructor(public afAuth: AngularFireAuth, private router: Router) {
 
-  ngOnInit() {
-    
   }
 
-  
+  ngOnInit() {
+
+  }
+
+  loginGoogle() {
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    this.router.navigate(['']);
+  }
+
+
 }
