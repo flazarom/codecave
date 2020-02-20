@@ -6,7 +6,7 @@
       <button class="btn btn-info" type="submit">Buscar</button>
     </form>
     <button class="btn btn-info btn-sm" *ngIf="!isLogged">
-      <a class="nav-link" href="#" data-toggle="modal" data-target="#ingresar">Ingresar</a>
+      <a class="nav-link" (click)="ingresar()">Ingresar</a>
     </button>
     <button class="btn btn-info btn-sm" *ngIf="isLogged">
       <a class="nav-link" (click)="logout()">Salir</a>
@@ -25,7 +25,7 @@
             <button class="btn btn-info" type="submit">Buscar</button>
           </div>
           <button class="btn btn-info btn-sm" *ngIf="!isLogged">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#ingresar">Ingresar</a>
+            <a class="nav-link" (click)="ingresar()">Ingresar</a>
           </button>
           <button class="btn btn-info btn-sm" *ngIf="isLogged">
             <a class="nav-link" (click)="logout()">Salir</a>
@@ -41,34 +41,5 @@
       </button>
     </nav>
   </div>
-
-  <!-- Button trigger modal -->
 </div>
 
-<!-- Modal -->
-<div class="modal fade black" id="ingresar" tabindex="-1" role="dialog" aria-labelledby="ingresarLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dark" role="document">
-    <div class="modal-content">
-      <div class="card bg-dark text-white mb-2 mt-2">
-        <div class="card-header">
-          Acceder a code(_c)ave
-        </div>
-        <div class="card-body">
-          <button type="button" class="btn btn-block btn-info btn-lg mr-3" (click)="loginGoogle()">
-            <span class="fa fa-google mr-4"></span>Ingresar con Google
-          </button>
-          <button type="button" class="btn btn-block btn-info btn-lg mr-3">
-            <span class="fa fa-github mr-4"></span>Ingresar con GitHub
-          </button>
-        </div>
-        <div class="recibirUsuario" *ngIf="isLogged">
-          <form>
-
-
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
