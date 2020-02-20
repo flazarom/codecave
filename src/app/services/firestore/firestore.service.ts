@@ -10,7 +10,7 @@ import { Observable } from "rxjs";
 })
 export class FirestoreService {
   constructor(private firestore: AngularFirestore) {}
-  //Crea un nuevo usuario
+  // Crea un nuevo usuario
   public createUser(data: {
     displayName: string;
     photoUrl: string;
@@ -22,7 +22,7 @@ export class FirestoreService {
       .set(data);
   }
 
-  //Obtiene un usuario
+  // Obtiene un usuario
   public getUser(documentId: string) {
     return this.firestore
       .collection("regUsers")
@@ -30,12 +30,12 @@ export class FirestoreService {
       .snapshotChanges();
   }
 
-  //Obtiene todos los usuarios
+  // Obtiene todos los usuarios
   public getUsers() {
     return this.firestore.collection("regUsers").snapshotChanges();
   }
 
-  //Actualiza un usuario
+  // Actualiza un usuario
   public updateUser(documentId: string, data: any) {
     return this.firestore
       .collection("regUsers")

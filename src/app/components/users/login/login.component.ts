@@ -27,53 +27,38 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // firstTime() va a comprobar si el usuario ya se registró, es decir, si completo sus datos, o simplemente ingresó
   firstTime() {
-    // this.authService.isAuth().subscribe(user => {
-    //   if (user) {
-    //     this.firestore
-    //       .collection("regUsers")
-    //       .doc(user.uid)
-    //       .ref.get()
-    //       .then(function(doc) {
-    //         if (doc.exists) {
-    //           console.log("existe");
-    //           this.router.navigate(["profile"]);
-    //         } else {
-    //           console.log("no existe");
-    //           this.router.navigate(["register"]);
-    //         }
-    //       })
-    //       .catch(function(error) {
-    //         console.log("Error getting document:", error);
-    //       });
-    //   }
-    // });
+    // se llama al AuthService para obtener los datos del usuario
     this.authService.isAuth().subscribe(user => {
       if (user) {
+        // comprueba si en la colección de firebase ya existe el ID del usuario
         this.firestore
           .collection("regUsers")
           .doc(user.uid)
           .ref.get()
           .then(doc => {
             if (doc.exists) {
-              console.log("existe");
+              // si existe, lo manda a su profile
               this.router.navigate(["profile"]);
             } else {
-              console.log("no existe");
+              // caso contrario, lo lleva al register para que complete sus datos
               this.router.navigate(["register"]);
             }
           })
-          .catch(function(error) {
-            console.log("Error getting document:", error);
+          .catch(function(err) {
+            console.log("err", err);
           });
       }
     });
   }
 
   loginGoogle() {
+    // el usuario se va a loguear con google como sea
     this.afAuth.auth
       .signInWithPopup(new auth.GoogleAuthProvider())
       .then(res => {
+        // se llama a la función firstTime para saber si pedirle que complete los datos o para enviarlo a su perfil
         this.firstTime();
       })
       .catch(err => console.log("err", err.message));
