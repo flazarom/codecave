@@ -17,6 +17,8 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { ProfileComponent } from "./components/users/profile/profile.component";
 import { RegisterComponent } from "./components/users/register/register.component";
 import { LoginComponent } from "./components/users/login/login.component";
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { LoginComponent } from "./components/users/login/login.component";
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]
