@@ -1,11 +1,23 @@
-<div class="card bg-dark text-white mb-2 mt-2">
-  <div class="card-header">
-    Snippet
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">snippet</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-info">Responder</a>
+
+<div *ngFor="let snippet of snippetService.snippets">
+  <div class="card bg-dark text-white mb-2 mt-2">
+    <div class="card-header">
+      {{ snippet.titulo }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Snippet</h5>
+      <p class="card-text">
+        Lenguaje:
+        {{ snippet.lenguaje }}
+      </p>
+      <p class="card-text">
+        Categoría:
+        {{ snippet.categoria }}
+      </p>
+      <p>
+        {{ snippet.desarrollo }}
+      </p>
+      <a href="#" class="btn btn-info">Responder</a>
+    </div>
   </div>
 </div>
-

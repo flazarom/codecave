@@ -1,3 +1,5 @@
+import { Snippet } from './../../../models/snippet';
+import { SnippetService } from './../../../services/snippet.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SnippetsComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected snippetService: SnippetService) { }
 
   ngOnInit(): void {
+    this.getPreguntas();
+  }
+
+  getPreguntas() {
+    this.snippetService.getSnippets().subscribe(res => {
+      this.snippetService.snippets = res as Snippet[];
+    });
   }
 
 }
