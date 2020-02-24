@@ -11,7 +11,9 @@ snippetCtrl.createSnippet = async (req, res, next) => {
   const snippet = new Snippet({
     titulo: req.body.titulo,
     lenguaje: req.body.lenguaje, 
-    desarrollo: req.body.desarrollo
+    desarrollo: req.body.desarrollo,
+    likes: req.body.likes,
+    creador: req.body.creador
   });
   await snippet.save();
   res.json({ status: "Snippet created" });
@@ -28,7 +30,9 @@ snippetCtrl.editSnippet = async (req, res, next) => {
   const snippet = {
     titulo: req.body.titulo,
     lenguaje: req.body.lenguaje, 
-    desarrollo: req.body.desarrollo
+    desarrollo: req.body.desarrollo,
+    likes: req.body.likes,
+    creador: req.body.creador
   };
   await Snippet.findByIdAndUpdate(id, { $set: snippet }, { new: true });
   res.json({ status: "Snippet Updated" });

@@ -13,7 +13,12 @@
       <p>
         {{ snippet.desarrollo }}
       </p>
+      <p>
+        {{ snippet.likes }}
+      </p>
       <a (click)="verPregunta(snippet._id)" class="btn btn-info">Responder</a>
+      <button (click)="darLike(snippet)" class="btn btn-danger">like</button>
+      {{ snippet.creador }}
     </div>
   </div>
 </div>

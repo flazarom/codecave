@@ -26,4 +26,13 @@ export class SnippetsComponent implements OnInit {
     this.route.navigate(['snippets/'+_id]);
   }
 
+  darLike(snippet: Snippet){
+    snippet.likes++;
+    this.snippetService.putSnippet(snippet).subscribe(
+      res => {
+        this.getPreguntas();
+      }
+    )
+  }
+
 }

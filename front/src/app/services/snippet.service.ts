@@ -36,4 +36,5 @@ export class SnippetService {
   deleteSnippet(_id: string) {
     return this.http.delete(this.URL_API + `/${_id}`);
   }
+
 }

@@ -14,7 +14,9 @@ export class SnippetComponent implements OnInit {
     _id: '',
     desarrollo: '',
     lenguaje: '',
-    titulo: ''
+    titulo: '',
+    likes: 0,
+    creador: ''
   };
 
   constructor(public snippetService: SnippetService,
