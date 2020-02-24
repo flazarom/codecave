@@ -1,0 +1,20 @@
+html,
+body,
+a,
+p,
+input,
+label {
+  color: white;
+}
+
+.div {
+  display: flex;
+}
+
+.nav-button-4 {
+  width: 100%;
+}
+
+#section {
+  display: block;
+}

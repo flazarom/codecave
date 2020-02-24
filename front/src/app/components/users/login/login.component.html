@@ -1,0 +1,54 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-4 col-sm-12 mt-3">
+    <div *ngIf="loginButtons">
+      <div class="card bg-dark text-white mb-2 mt-2">
+        <div class="card-body">
+          <button
+            type="button"
+            class="btn btn-block btn-info btn-lg mr-3"
+            (click)="loginGoogle()"
+          >
+            <span class="fa fa-google mr-4"></span>Ingresar con Google
+          </button>
+          <button type="button" class="btn btn-block btn-info btn-lg mr-3">
+            <span class="fa fa-github mr-4"></span>Ingresar con GitHub
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="registerFields">
+      <form name="registerUser">
+        <div class="form-group">
+          <label>Nombre de usuario</label>
+          <input
+            name="username"
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Ingresar nombre de usuario"
+            required
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >Con este nick te mostrarás en codecave</small
+          >
+        </div>
+        <div class="form-group">
+          <label>Imagen</label>
+          <input
+            name="userphoto"
+            type="text"
+            class="form-control"
+            id="userphoto"
+            placeholder="URL de la imagen de perfil"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >Dejar vacío para conservar tu foto del servicio con el que
+            ingresaste</small
+          >
+        </div>
+        <!-- <button class="btn btn-info" (click)="">Registrar</button> -->
+      </form>
+    </div>
+  </div>
+</div>
