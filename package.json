@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "../back/index.js",
+  "main": "back/index.js",
   "scripts": {
     "dev": "nodemon ./server/index.js"
   },
