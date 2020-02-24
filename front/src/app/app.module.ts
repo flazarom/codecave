@@ -18,6 +18,9 @@ import { ProfileComponent } from "./components/users/profile/profile.component";
 import { RegisterComponent } from "./components/users/register/register.component";
 import { LoginComponent } from "./components/users/login/login.component";
 import { HttpClientModule } from '@angular/common/http';
+import { PreguntaComponent } from './components/getOne/pregunta/pregunta.component';
+import { SnippetComponent } from './components/getOne/snippet/snippet.component';
+import { TutorialComponent } from './components/getOne/tutorial/tutorial.component';
 
 
 @NgModule({
@@ -31,7 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
     PortalComponent,
     ProfileComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    PreguntaComponent,
+    SnippetComponent,
+    TutorialComponent
   ],
   imports: [
     BrowserModule,

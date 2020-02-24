@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Snippet } from './../../../models/snippet';
 import { SnippetService } from './../../../services/snippet.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SnippetsComponent implements OnInit {
 
-  constructor(public snippetService: SnippetService) { }
+  constructor(public snippetService: SnippetService, private route: Router) { }
 
   ngOnInit(): void {
     this.getPreguntas();
@@ -19,6 +20,10 @@ export class SnippetsComponent implements OnInit {
     this.snippetService.getSnippets().subscribe(res => {
       this.snippetService.snippets = res as Snippet[];
     });
+  }
+
+  verPregunta(_id: String){
+    this.route.navigate(['snippets/'+_id]);
   }
 
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Snippet } from './../models/snippet';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class SnippetService {
 
   getSnippets() {
     return this.http.get(this.URL_API);
+  }
+
+  getSnippet(_id: string){
+    return this.http.get<Snippet>(this.URL_API + `/${_id}`);
   }
 
   putSnippet(snippet: Snippet) {

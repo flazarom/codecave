@@ -1,11 +1,10 @@
 
-<div *ngFor="let snippet of snippetService.snippets">
   <div class="card bg-dark text-white mb-2 mt-2">
     <div class="card-header">
       {{ snippet.titulo }}
+      {{ snippet._id }}
     </div>
     <div class="card-body">
-      <h5 class="card-title">Snippet</h5>
       <p class="card-text">
         Lenguaje:
         {{ snippet.lenguaje }}
@@ -13,7 +12,6 @@
       <p>
         {{ snippet.desarrollo }}
       </p>
-      <a (click)="verPregunta(snippet._id)" class="btn btn-info">Responder</a>
+      <a href="#" class="btn btn-info">Responder</a>
     </div>
   </div>
-</div>
