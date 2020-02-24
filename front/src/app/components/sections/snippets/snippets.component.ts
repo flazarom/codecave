@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SnippetsComponent implements OnInit {
 
-  constructor(protected snippetService: SnippetService) { }
+  constructor(public snippetService: SnippetService) { }
 
   ngOnInit(): void {
     this.getPreguntas();

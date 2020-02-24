@@ -9,7 +9,7 @@ import { Component, OnInit } from "@angular/core";
   providers: [PreguntaService]
 })
 export class PreguntasComponent implements OnInit {
-  constructor(protected preguntaService: PreguntaService) {}
+  constructor(public preguntaService: PreguntaService) {}
 
   ngOnInit() {
     this.getPreguntas();
