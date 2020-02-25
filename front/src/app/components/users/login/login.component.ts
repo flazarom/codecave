@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     public afAuth: AngularFireAuth,
     private router: Router,
     private authService: AuthService,
-    private firestore: AngularFirestore,
+    private fs: AngularFirestore,
     public profile: ProfileComponent,
     private userService: UserService
   ) {}
@@ -35,10 +35,10 @@ export class LoginComponent implements OnInit {
     bitbucket: ""
   };
 
+  ngOnInit(): void {}
+
   loginButtons = true;
   registerButtons = false;
-
-  ngOnInit(): void {}
 
   loginGoogle() {
     this.afAuth.auth
@@ -52,11 +52,17 @@ export class LoginComponent implements OnInit {
 
   register() {
     this.authService.isAuth().subscribe(user => {
+      let photoUrl;
+      if (document.forms["registerForm"]["photoUrl"].value == "") {
+        photoUrl = user.photoURL;
+      } else {
+        photoUrl = document.forms["registerForm"]["photoUrl"].value == "";
+      }
       let userData = {
         _id: document.forms["registerForm"]["username"].value,
         username: document.forms["registerForm"]["username"].value,
         email: user.email,
-        photoUrl: document.forms["registerForm"]["photoUrl"].value,
+        photoUrl: photoUrl,
         bio: document.forms["registerForm"]["bio"].value,
         web: document.forms["registerForm"]["web"].value,
         github: document.forms["registerForm"]["github"].value,
@@ -70,29 +76,51 @@ export class LoginComponent implements OnInit {
         console.log("posted");
       });
 
-      this.firestore
+      this.fs
         .collection("regUsers")
         .doc(user.uid)
-        .set({ uid: user.uid });
+        .set({ uid: user.uid, username: userData.username });
+
+      this.authService.isAuth().subscribe(user => {
+        if (user) {
+          // comprueba si en la colección de firebase ya existe el ID del usuario
+          this.fs
+            .collection("regUsers")
+            .doc(user.uid)
+            .ref.get()
+            .then(doc => {
+              let username = doc.get("username");
+              this.router.navigate(["users", username]);
+            })
+            .catch(function(err) {
+              console.log("err", err);
+            });
+        }
+      });
     });
   }
 
   firstTime() {
     // se llama al AuthService para obtener los datos del usuario
+    this.loginButtons = false;
+
     this.authService.isAuth().subscribe(user => {
       if (user) {
         // comprueba si en la colección de firebase ya existe el ID del usuario
-        this.firestore
+        this.fs
           .collection("regUsers")
           .doc(user.uid)
           .ref.get()
           .then(doc => {
-            if (doc.exists) {
-              this.router.navigate(["profile"]);
-            } else {
-              this.loginButtons = false;
+            try {
+              if (doc.exists) {
+                let username = doc.get("username");
+                this.router.navigate(["users", username]);
+              } else {
+                this.registerButtons = true;
+              }
+            } catch {
               this.registerButtons = true;
-              console.log("no existe");
             }
           })
           .catch(function(err) {

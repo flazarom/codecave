@@ -29,10 +29,6 @@ export class UserService {
     return this.http.get<User>(this.URL_API + `/${_id}`);
   }
 
-  // getUser(_username: string) {
-  //   return this.http.get<User>(this.URL_API + `/${_username}`);
-  // }
-
   putUser(user: User) {
     return this.http.put(this.URL_API + `/${user._id}`, user);
   }

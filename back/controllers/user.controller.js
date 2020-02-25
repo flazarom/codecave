@@ -22,15 +22,9 @@ userCtrl.createUser = async (req, res, next) => {
   res.json({ status: "User created" });
 };
 
-// userCtrl.getUser = async (req, res, next) => {
-//   const { id } = req.params;
-//   const user = await User.findById(id);
-//   res.json(user);
-// };
-
 userCtrl.getUser = async (req, res, next) => {
-  const { id } = req.params;
-  const user = await User.findById(id);
+  const { username } = req.params;
+  const user = await User.findOne({ username: username });
   res.json(user);
 };
 

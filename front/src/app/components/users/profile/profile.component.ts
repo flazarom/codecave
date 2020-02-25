@@ -29,13 +29,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe(res => {
-      console.log(res.id);
-      this.getUser(res.id);
+      this.getUser(res.username);
     });
   }
 
-  getUser(_id: string) {
-    this.userService.getUser(_id).subscribe(res => {
+  getUser(username: string) {
+    this.userService.getUser(username).subscribe(res => {
       this.user = res as User;
       console.log(this.user);
     });

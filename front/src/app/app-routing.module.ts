@@ -10,7 +10,8 @@ import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [
   { path: "", component: PortalComponent },
-  { path: "users/:id", component: ProfileComponent },
+  { path: "users/:username", component: ProfileComponent },
+  { path: "profile", component: ProfileComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "snippets/:id", component: SnippetComponent },

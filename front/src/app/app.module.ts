@@ -46,7 +46,7 @@ import { TutorialComponent } from "./components/getOne/tutorial/tutorial.compone
     AngularFirestoreModule,
     HttpClientModule
   ],
-  providers: [AngularFireAuth],
+  providers: [AngularFireAuth, ProfileComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
