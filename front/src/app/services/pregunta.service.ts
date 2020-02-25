@@ -24,6 +24,10 @@ export class PreguntaService {
     return this.http.get(this.URL_API);
   }
 
+  getPregunta(_id: string){
+    return this.http.get<Pregunta>(this.URL_API + `/${_id}`);
+  }
+
   putPregunta(pregunta: Pregunta) {
     return this.http.put(this.URL_API + `/${pregunta._id}`, pregunta);
   }

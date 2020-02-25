@@ -13,16 +13,16 @@ export class SnippetsComponent implements OnInit {
   constructor(public snippetService: SnippetService, private route: Router) { }
 
   ngOnInit(): void {
-    this.getPreguntas();
+    this.getSnippets();
   }
 
-  getPreguntas() {
+  getSnippets() {
     this.snippetService.getSnippets().subscribe(res => {
       this.snippetService.snippets = res as Snippet[];
     });
   }
 
-  verPregunta(_id: String){
+  verSnippet(_id: String){
     this.route.navigate(['snippets/'+_id]);
   }
 
@@ -30,7 +30,7 @@ export class SnippetsComponent implements OnInit {
     snippet.likes++;
     this.snippetService.putSnippet(snippet).subscribe(
       res => {
-        this.getPreguntas();
+        this.getSnippets();
       }
     )
   }

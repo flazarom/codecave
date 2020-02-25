@@ -1,3 +1,6 @@
+import { Tutorial } from './../../../models/tutorial';
+import { Router } from '@angular/router';
+import { TutorialService } from './../../../services/tutorial.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutorialesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public tutorialService: TutorialService, private route: Router) { }
 
   ngOnInit(): void {
+    this.getTutorial();
   }
 
+  getTutorial() {
+    this.tutorialService.getTutoriales().subscribe(res => {
+      this.tutorialService.tutoriales = res as Tutorial[];
+    });
+  }
+
+  verTutorial(_id: String){
+    this.route.navigate(['tutoriales/'+_id]);
+  }
+
+  darLike(tutorial: Tutorial){
+    tutorial.likes++;
+    this.tutorialService.putTutorial(tutorial).subscribe(
+      res => {
+        this.getTutorial();
+      }
+    )
+  }
 }

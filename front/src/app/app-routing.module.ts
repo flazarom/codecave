@@ -1,3 +1,5 @@
+import { PreguntaComponent } from './components/getOne/pregunta/pregunta.component';
+import { TutorialComponent } from './components/getOne/tutorial/tutorial.component';
 import { SnippetComponent } from './components/getOne/snippet/snippet.component';
 import { LoginComponent } from "./components/users/login/login.component";
 import { RegisterComponent } from "./components/users/register/register.component";
@@ -11,7 +13,9 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "snippets/:id", component: SnippetComponent }
+  { path: "snippets/:id", component: SnippetComponent },
+  { path: "tutoriales/:id", component: TutorialComponent },
+  { path: "preguntas/:id", component: PreguntaComponent }
 ];
 
 @NgModule({

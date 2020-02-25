@@ -11,7 +11,9 @@ preguntaCtrl.createPregunta = async (req, res, next) => {
   const pregunta = new Pregunta({
     pregunta: req.body.pregunta,
     categoria: req.body.categoria,
-    desarrollo: req.body.desarrollo
+    desarrollo: req.body.desarrollo,
+    likes: req.body.likes,
+    creador: req.body.creador
   });
   await pregunta.save();
   res.json({ status: "Pregunta created" });
@@ -28,7 +30,9 @@ preguntaCtrl.editPregunta = async (req, res, next) => {
   const pregunta = {
     pregunta: req.body.pregunta,
     categoria: req.body.categoria,
-    desarrollo: req.body.desarrollo
+    desarrollo: req.body.desarrollo,
+    likes: req.body.likes,
+    creador: req.body.creador
   };
   await Pregunta.findByIdAndUpdate(id, { $set: pregunta }, { new: true });
   res.json({ status: "Pregunta Updated" });

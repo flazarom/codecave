@@ -1,1 +1,17 @@
-<p>pregunta works!</p>
+
+  <div class="card bg-dark text-white mb-2 mt-2">
+    <div class="card-header">
+      {{ pregunta.pregunta }}
+      {{ pregunta._id }}
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        Lenguaje:
+        {{ pregunta.categoria }}
+      </p>
+      <p>
+        {{ pregunta.desarrollo }}
+      </p>
+      <a href="#" class="btn btn-info">Responder</a>
+    </div>
+  </div>

@@ -2,10 +2,11 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  title: { type: String, required: true },
-  position: { type: String, required: true },
-  office: { type: String, required: true },
-  salary: { type: Number, required: true }
+  titulo: { type: String, required: true },
+  contenido: { type: String, required: true },
+  categoria: { type: Array, required: true },
+  likes: { type: Number, required: false },
+  creador: { type: String, required: true }
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Tutorial", userSchema);

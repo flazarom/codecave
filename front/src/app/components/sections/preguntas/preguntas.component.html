@@ -13,7 +13,12 @@
       <p>
         {{ pregunta.desarrollo }}
       </p>
-      <a href="#" class="btn btn-info">Responder</a>
+      <p>
+        {{ pregunta.likes }}
+      </p>
+      <a (click)="verPregunta(pregunta._id)" class="btn btn-info">Responder</a>
+      <button (click)="darLike(pregunta)" class="btn btn-danger">like</button>
+      {{ pregunta.creador }}
     </div>
   </div>
 </div>

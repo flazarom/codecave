@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Pregunta } from "./../../../models/pregunta";
 import { PreguntaService } from "./../../../services/pregunta.service";
 import { Component, OnInit } from "@angular/core";
@@ -9,7 +10,7 @@ import { Component, OnInit } from "@angular/core";
   providers: [PreguntaService]
 })
 export class PreguntasComponent implements OnInit {
-  constructor(public preguntaService: PreguntaService) {}
+  constructor(public preguntaService: PreguntaService, private route: Router) {}
 
   ngOnInit() {
     this.getPreguntas();
@@ -19,6 +20,19 @@ export class PreguntasComponent implements OnInit {
     this.preguntaService.getPreguntas().subscribe(res => {
       this.preguntaService.preguntas = res as Pregunta[];
     });
+  }
+
+  verPregunta(_id: String){
+    this.route.navigate(['preguntas/'+_id]);
+  }
+
+  darLike(pregunta: Pregunta){
+    pregunta.likes++;
+    this.preguntaService.putPregunta(pregunta).subscribe(
+      res => {
+        this.getPreguntas();
+      }
+    )
   }
 
 }
