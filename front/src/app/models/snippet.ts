@@ -1,6 +1,12 @@
 export class Snippet {
-
-  constructor(_id = "", titulo = "", lenguaje="", desarrollo = "", likes = 0, creador = "") {
+  constructor(
+    _id = "",
+    titulo = "",
+    lenguaje = "",
+    desarrollo = "",
+    likes = 0,
+    creador = ""
+  ) {
     this._id = _id;
     this.lenguaje = lenguaje;
     this.titulo = titulo;

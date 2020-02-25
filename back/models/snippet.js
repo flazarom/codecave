@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const snippetSchema = new Schema({
   titulo: { type: String, required: true },
-  lenguaje: { type: String, required: true }, 
+  lenguaje: { type: String, required: true },
   desarrollo: { type: String, required: true },
   likes: { type: Number, required: false },
   creador: { type: String, required: true }

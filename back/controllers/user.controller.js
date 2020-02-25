@@ -9,14 +9,24 @@ userCtrl.getUsers = async (req, res, next) => {
 
 userCtrl.createUser = async (req, res, next) => {
   const user = new User({
-    name: req.body.name,
-    position: req.body.position,
-    office: req.body.office,
-    salary: req.body.salary
+    username: req.body.username,
+    email: req.body.email,
+    photoUrl: req.body.photoUrl,
+    bio: req.body.bio,
+    web: req.body.web,
+    github: req.body.github,
+    gitlab: req.body.gitlab,
+    bitbucket: req.body.bitbucket
   });
   await user.save();
   res.json({ status: "User created" });
 };
+
+// userCtrl.getUser = async (req, res, next) => {
+//   const { id } = req.params;
+//   const user = await User.findById(id);
+//   res.json(user);
+// };
 
 userCtrl.getUser = async (req, res, next) => {
   const { id } = req.params;
@@ -27,10 +37,14 @@ userCtrl.getUser = async (req, res, next) => {
 userCtrl.editUser = async (req, res, next) => {
   const { id } = req.params;
   const user = {
-    name: req.body.name,
-    position: req.body.position,
-    office: req.body.office,
-    salary: req.body.salary
+    username: req.body.username,
+    email: req.body.email,
+    photoUrl: req.body.photoUrl,
+    bio: req.body.bio,
+    web: req.body.web,
+    github: req.body.github,
+    gitlab: req.body.gitlab,
+    bitbucket: req.body.bitbucket
   };
   await User.findByIdAndUpdate(id, { $set: user }, { new: true });
   res.json({ status: "User Updated" });

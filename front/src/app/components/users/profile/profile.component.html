@@ -1,29 +1,21 @@
 <section id="profile" class="container">
   <div class="row mt-5">
-    <div
-      class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center card"
-    >
-      <div class="row">
-        <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+    </div>
+    <div class="user-details justify-content-flex-start">
+      <div class="image-profile col-sm-12 col-md-5 col-lg-4">
+        <img
+          src="{{ user.photoUrl }}"
+          class="rounded-circle img-thumbnail"
+          alt="profile"
+        />
       </div>
-      <div class="row user-details">
-        <!-- <div class="col-12">
-          <img
-            src="{{ user.photoUrl }}"
-            class="rounded-circle img-thumbnail"
-            alt="profile"
-          />
-          {{ user.displayName }}
-          <p>
-            {{ users.email }}
-          </p>
-
-          <hr />
-          <span
-            >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores
-            suscipit itaque minima quae.</span
-          >
-        </div> -->
+      <div class="details image-profile col-sm-12 col-md-5 col-lg-4">
+        <b
+          ><h3>{{ user.username }}</h3></b
+        >
+        <p>{{ user.email }}</p>
       </div>
     </div>
   </div>

@@ -1,3 +1,5 @@
+import { UserService } from "./../../../services/user.service";
+import { User } from "./../../../models/user";
 import { AuthService } from "./../../../services/auth.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
@@ -5,15 +7,37 @@ import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.css"]
+  styleUrls: ["./../../../app.component.css", "./profile.component.css"]
 })
 export class ProfileComponent implements OnInit {
+  user: User = {
+    _id: "",
+    username: "",
+    email: "",
+    photoUrl: "",
+    bio: "",
+    web: "",
+    github: "",
+    gitlab: "",
+    bitbucket: ""
+  };
+
   constructor(
-    private authService: AuthService,
-    private rutaActiva: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private userService: UserService
   ) {}
 
-  public providerId: string = "null";
+  ngOnInit(): void {
+    this.activeRoute.params.subscribe(res => {
+      console.log(res.id);
+      this.getUser(res.id);
+    });
+  }
 
-  ngOnInit(): void {}
+  getUser(_id: string) {
+    this.userService.getUser(_id).subscribe(res => {
+      this.user = res as User;
+      console.log(this.user);
+    });
+  }
 }

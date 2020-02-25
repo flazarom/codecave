@@ -1,3 +1,6 @@
+import { UserService } from "./../../../services/user.service";
+import { ProfileComponent } from "./../profile/profile.component";
+import { User } from "./../../../models/user";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { AuthService } from "./../../../services/auth.service";
 import { Router, Data } from "@angular/router";
@@ -11,22 +14,69 @@ import { auth, firestore } from "firebase/app";
   styleUrls: ["./../../../app.component.css", "./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  public users = [];
-
   constructor(
     public afAuth: AngularFireAuth,
     private router: Router,
     private authService: AuthService,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    public profile: ProfileComponent,
+    private userService: UserService
   ) {}
 
-  loginButtons = true;
+  user: User = {
+    _id: "",
+    username: "",
+    email: "",
+    photoUrl: "",
+    bio: "",
+    web: "",
+    github: "",
+    gitlab: "",
+    bitbucket: ""
+  };
 
-  registerFields = false;
+  loginButtons = true;
+  registerButtons = false;
 
   ngOnInit(): void {}
 
-  // firstTime() va a comprobar si el usuario ya se registró, es decir, si completo sus datos, o simplemente ingresó
+  loginGoogle() {
+    this.afAuth.auth
+      .signInWithPopup(new auth.GoogleAuthProvider())
+      .then(res => {
+        console.log("user logged");
+        this.firstTime();
+      })
+      .catch(err => console.log("err", err.message));
+  }
+
+  register() {
+    this.authService.isAuth().subscribe(user => {
+      let userData = {
+        _id: document.forms["registerForm"]["username"].value,
+        username: document.forms["registerForm"]["username"].value,
+        email: user.email,
+        photoUrl: document.forms["registerForm"]["photoUrl"].value,
+        bio: document.forms["registerForm"]["bio"].value,
+        web: document.forms["registerForm"]["web"].value,
+        github: document.forms["registerForm"]["github"].value,
+        gitlab: document.forms["registerForm"]["gitlab"].value,
+        bitbucket: document.forms["registerForm"]["bitbucket"].value
+      };
+
+      console.log(userData.github);
+
+      this.userService.postUser(userData).subscribe(res => {
+        console.log("posted");
+      });
+
+      this.firestore
+        .collection("regUsers")
+        .doc(user.uid)
+        .set({ uid: user.uid });
+    });
+  }
+
   firstTime() {
     // se llama al AuthService para obtener los datos del usuario
     this.authService.isAuth().subscribe(user => {
@@ -38,12 +88,11 @@ export class LoginComponent implements OnInit {
           .ref.get()
           .then(doc => {
             if (doc.exists) {
-              // si existe, lo manda a su profile
               this.router.navigate(["profile"]);
             } else {
-              // caso contrario, se pide que complete sus datos
               this.loginButtons = false;
-              this.registerFields = true;
+              this.registerButtons = true;
+              console.log("no existe");
             }
           })
           .catch(function(err) {
@@ -51,16 +100,5 @@ export class LoginComponent implements OnInit {
           });
       }
     });
-  }
-
-  loginGoogle() {
-    // el usuario se va a loguear con google como sea
-    this.afAuth.auth
-      .signInWithPopup(new auth.GoogleAuthProvider())
-      .then(res => {
-        // se llama a la función firstTime para saber si pedirle que complete los datos o para enviarlo a su perfil
-        this.firstTime();
-      })
-      .catch(err => console.log("err", err.message));
   }
 }

@@ -17,38 +17,117 @@
       </div>
     </div>
 
-    <div *ngIf="registerFields">
-      <form name="registerUser">
-        <div class="form-group">
-          <label>Nombre de usuario</label>
-          <input
-            name="username"
-            type="text"
-            class="form-control"
-            id="username"
-            placeholder="Ingresar nombre de usuario"
-            required
-          />
-          <small id="emailHelp" class="form-text text-muted"
-            >Con este nick te mostrarás en codecave</small
+    <!-- <div *ngIf="registerButtons"> -->
+    <div>
+      <div class="card bg-dark text-white mb-2 mt-2">
+        <div class="card-body">
+          <h4 class="mb-3">Completa tu perfil</h4>
+          <form name="registerForm">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><span class="fa fa-at"></span
+                ></span>
+              </div>
+              <input
+                name="username"
+                type="text"
+                class="form-control"
+                placeholder="Nombre de usuario"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                name="photoUrl"
+                type="url"
+                class="form-control"
+                placeholder="URL de la foto de perfil"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><span class="fa fa-image"></span
+                ></span>
+              </div>
+            </div>
+
+            <div class="input-group mb-3 ">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><span class="fa fa-edit"></span
+                ></span>
+              </div>
+              <textarea
+                name="bio"
+                placeholder="Bio"
+                class="form-control"
+              ></textarea>
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                name="web"
+                type="url"
+                class="form-control"
+                placeholder="Portafolio o sitio web"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><span class="fa fa-globe"></span
+                ></span>
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><span class="fa fa-github-alt"></span
+                ></span>
+              </div>
+              <input
+                name="github"
+                type="url"
+                class="form-control"
+                placeholder="GitHub"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                name="gitlab"
+                type="url"
+                class="form-control"
+                placeholder="GitLab"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><span class="fa fa-gitlab"></span
+                ></span>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><span class="fa fa-bitbucket"></span
+                ></span>
+              </div>
+              <input
+                name="bitbucket"
+                type="url"
+                class="form-control"
+                placeholder="BitBucket"
+              />
+            </div>
+          </form>
+          <button
+            class="btn btn-info btn-block"
+            type="submit"
+            (click)="register()"
           >
+            Guardar cambios
+          </button>
         </div>
-        <div class="form-group">
-          <label>Imagen</label>
-          <input
-            name="userphoto"
-            type="text"
-            class="form-control"
-            id="userphoto"
-            placeholder="URL de la imagen de perfil"
-          />
-          <small id="emailHelp" class="form-text text-muted"
-            >Dejar vacío para conservar tu foto del servicio con el que
-            ingresaste</small
-          >
-        </div>
-        <!-- <button class="btn btn-info" (click)="">Registrar</button> -->
-      </form>
+      </div>
     </div>
   </div>
 </div>
