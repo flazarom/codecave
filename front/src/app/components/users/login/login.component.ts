@@ -7,7 +7,6 @@ import { Router, Data } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Component, OnInit } from "@angular/core";
 import { auth, firestore } from "firebase/app";
-
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -38,70 +37,99 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   loginButtons = true;
-  showRegisterForm = true;
+  showRegisterForm = false;
 
-  loginGoogle() {
-    // abre un popup de inicio ce sesión con google usando firebase
-    this.afAuth.auth
-      .signInWithPopup(new auth.GoogleAuthProvider())
-      .then(res => {
-        console.log("user logged");
-        // cuando se loguea comprobamos si es la primera vez
-        this.firstTime();
-      })
-      .catch(err => console.log("err", err.message));
+  //validators
+
+  isUserNameLength = false;
+  isUsernameNoSpaces = false;
+  isUsernameAvailable = false;
+  usernameValid;
+
+  usernameSpaces(username) {
+    var noValido = /\s/;
+    if (noValido.test(username)) {
+      this.isUsernameNoSpaces = false;
+    } else {
+      this.isUsernameNoSpaces = true;
+    }
   }
 
-  //utilizamos onload y onerror para saber si la imagen va a cargar o no
-  checkImage(imageSrc, good, bad) {
-    var img = new Image();
-    img.onload = good;
-    img.onerror = bad;
-    img.src = imageSrc;
+  usernameLength(username) {
+    if (username.length <= 16) {
+      this.isUserNameLength = true;
+    } else {
+      this.isUserNameLength = false;
+    }
   }
 
-  register() {
+  usernameAvailable(username) {
+    this.userService.getUser(username).subscribe(userData => {
+      if (userData) {
+        this.isUsernameAvailable = false;
+      } else {
+        this.isUsernameAvailable = true;
+      }
+    });
+  }
+
+  async checkUsername() {
+    let username = document.forms["registerForm"]["username"].value;
+    await this.usernameAvailable(username);
+    await this.resolveAfter();
+    console.log("cambio");
+    this.usernameLength(username);
+    this.usernameSpaces(username);
+    if (
+      this.isUserNameLength == true &&
+      this.isUsernameNoSpaces == true &&
+      this.isUsernameAvailable == true
+    ) {
+      this.usernameValid = true;
+      console.log("valido");
+      console.log("length ", this.isUserNameLength);
+      console.log("spaces ", this.isUsernameNoSpaces);
+      console.log("available ", this.isUserNameLength);
+    } else {
+      this.usernameValid = false;
+      console.log("invalido");
+    }
+  }
+
+  resolveAfter() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve("resolved");
+      }, 500);
+    });
+  }
+
+  submit() {
     this.authService.isAuth().subscribe(user => {
-      //guardamos la foto que utilizo el usuario
-      let photoUrl = document.forms["registerForm"]["photoUrl"].value;
-      this.checkImage(
-        photoUrl,
-        //si la foto existe, joya
-        function() {
-          console.log("Image exists");
-        },
-        //si no existe, usamos la foto que tiene en google y chau jaja
-        function() {
-          console.log("Image doesn't exists");
-          photoUrl = user.email;
-        }
-      );
-
-      // guardamos todo el formulario en un objeto, esto si despues lo podemos pasar a
-      // reactivo, mejor
       let userData = {
         _id: document.forms["registerForm"]["username"].value,
         username: document.forms["registerForm"]["username"].value,
         email: user.email,
-        photoUrl: photoUrl,
+        photoUrl: document.forms["registerForm"]["photoUrl"].value,
         bio: document.forms["registerForm"]["bio"].value,
         web: document.forms["registerForm"]["web"].value,
         github: document.forms["registerForm"]["github"].value,
         gitlab: document.forms["registerForm"]["gitlab"].value,
         bitbucket: document.forms["registerForm"]["bitbucket"].value
       };
-
-      // creamos el usuario en la base de datos
       this.userService.postUser(userData).subscribe(res => {
         console.log("posted");
       });
-
       // añadimos la uid (id de google) del usuario a una coleccion en firebase
       // para que la proxima vez q se loguee no le pida registrarse
       this.fs
         .collection("regUsers")
         .doc(user.uid)
-        .set({ uid: user.uid, username: userData.username });
+        .set({
+          uid: user.uid,
+          username: userData.username,
+          email: userData.email
+        });
 
       this.authService.isAuth().subscribe(user => {
         if (user) {
@@ -121,40 +149,6 @@ export class LoginComponent implements OnInit {
             });
         }
       });
-    });
-  }
-
-  firstTime() {
-    this.loginButtons = false;
-
-    // se llama al AuthService para obtener los datos del usuario
-    this.authService.isAuth().subscribe(user => {
-      if (user) {
-        // comprueba si en la colección de firebase ya existe el ID del usuario
-        this.fs
-          .collection("regUsers")
-          .doc(user.uid)
-          .ref.get()
-          .then(doc => {
-            try {
-              if (doc.exists) {
-                // obtenemos el nombre de usuario y lo usamos para enviarlo a
-                // la ruta de su perfil
-                let username = doc.get("username");
-                this.router.navigate(["users", username]);
-              } else {
-                // si no existe en la coleccion de firebase, es xq aun no se registra,
-                // asi que le ponemos el formulario
-                this.showRegisterForm = true;
-              }
-            } catch {
-              this.showRegisterForm = true;
-            }
-          })
-          .catch(function(err) {
-            console.log("err", err);
-          });
-      }
     });
   }
 }

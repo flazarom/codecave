@@ -1,4 +1,4 @@
-<div class="row d-flex justify-content-center">
+<!-- <div class="row d-flex justify-content-center">
   <div class="col-md-4 col-sm-12 mt-3">
     <div *ngIf="loginButtons">
       <div class="card bg-dark text-white mb-2 mt-2">
@@ -15,118 +15,146 @@
           </button>
         </div>
       </div>
-    </div>
-
-    <div *ngIf="showRegisterForm">
-      <div class="card bg-dark text-white mb-2 mt-2">
-        <div class="card-body">
-          <h4 class="mb-3">Completa tu perfil</h4>
-          <form name="registerForm">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"
-                  ><span class="fa fa-at"></span
-                ></span>
-              </div>
-              <input
-                name="username"
-                type="text"
-                class="form-control"
-                placeholder="Nombre de usuario"
-              />
-            </div>
-
-            <div class="input-group mb-3">
-              <input
-                name="photoUrl"
-                type="url"
-                class="form-control"
-                placeholder="URL de la foto de perfil"
-              />
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"
-                  ><span class="fa fa-image"></span
-                ></span>
-              </div>
-            </div>
-
-            <div class="input-group mb-3 ">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"
-                  ><span class="fa fa-edit"></span
-                ></span>
-              </div>
-              <textarea
-                name="bio"
-                placeholder="Bio"
-                class="form-control"
-              ></textarea>
-            </div>
-
-            <div class="input-group mb-3">
-              <input
-                name="web"
-                type="url"
-                class="form-control"
-                placeholder="Portafolio o sitio web"
-              />
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"
-                  ><span class="fa fa-globe"></span
-                ></span>
-              </div>
-            </div>
-
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"
-                  ><span class="fa fa-github-alt"></span
-                ></span>
-              </div>
-              <input
-                name="github"
-                type="url"
-                class="form-control"
-                placeholder="GitHub"
-              />
-            </div>
-
-            <div class="input-group mb-3">
-              <input
-                name="gitlab"
-                type="url"
-                class="form-control"
-                placeholder="GitLab"
-              />
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"
-                  ><span class="fa fa-gitlab"></span
-                ></span>
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"
-                  ><span class="fa fa-bitbucket"></span
-                ></span>
-              </div>
-              <input
-                name="bitbucket"
-                type="url"
-                class="form-control"
-                placeholder="BitBucket"
-              />
-            </div>
-          </form>
-          <button
-            class="btn btn-info btn-block"
-            type="submit"
-            (click)="register()"
-          >
-            Guardar cambios
-          </button>
+    </div> -->
+<div class="row d-flex justify-content-center">
+  <div class="card bg-dark text-white mb-2 mt-2 col-lg-4 col-md-6 col-sm-12 ">
+    <div class="card-body">
+      <h4 class="mb-3">Completa tu perfil</h4>
+      <form name="registerForm">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><span class="fa fa-at"></span
+            ></span>
+          </div>
+          <input
+            (click)="checkUsername()"
+            (change)="checkUsername()"
+            formControlName="username"
+            name="username"
+            type="text"
+            class="form-control"
+            placeholder="Nombre de usuario"
+          />
+          <div class="input-group-prepend green" *ngIf="usernameValid == true">
+            <span class="input-group-text" id="basic-addon1"
+              ><span class="fa fa-check"></span
+            ></span>
+          </div>
+          <div class="input-group-prepend red" *ngIf="usernameValid == false">
+            <span class="input-group-text" id="basic-addon1"
+              ><span class="fa fa-times"></span
+            ></span>
+          </div>
         </div>
-      </div>
+
+        <div class="input-group mb-3">
+          <input
+            formControlName="photoUrl"
+            name="photoUrl"
+            type="url"
+            class="form-control"
+            placeholder="URL de la foto de perfil"
+          />
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><span class="fa fa-image"></span
+            ></span>
+          </div>
+        </div>
+
+        <div class="input-group mb-3 ">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><span class="fa fa-edit"></span
+            ></span>
+          </div>
+          <textarea
+            formControlName="bio"
+            name="bio"
+            placeholder="Bio"
+            class="form-control"
+          ></textarea>
+        </div>
+
+        <div class="input-group mb-3">
+          <input
+            formControlName="web"
+            name="web"
+            type="url"
+            class="form-control"
+            placeholder="Portafolio o sitio web"
+          />
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><span class="fa fa-globe"></span
+            ></span>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">github.com/</span>
+          </div>
+          <input
+            formControlName="github"
+            name="github"
+            type="url"
+            class="form-control"
+            placeholder="username"
+          />
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><span class="fa fa-github-alt"></span
+            ></span>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">gitlab.com/</span>
+          </div>
+          <input
+            formControlName="gitlab"
+            name="gitlab"
+            type="url"
+            class="form-control"
+            placeholder="username"
+          />
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><span class="fa fa-gitlab"></span
+            ></span>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              >bitbucket.org/</span
+            >
+          </div>
+          <input
+            formControlName="bitbucket"
+            name="bitbucket"
+            type="url"
+            class="form-control"
+            placeholder="username"
+          />
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"
+              ><span class="fa fa-bitbucket"></span
+            ></span>
+          </div>
+        </div>
+      </form>
+      <button
+        class="btn btn-info btn-block"
+        type="submit"
+        [disabled]="!usernameValid"
+        (click)="submit()"
+      >
+        Guardar cambios
+      </button>
     </div>
   </div>
 </div>

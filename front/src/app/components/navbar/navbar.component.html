@@ -1,7 +1,7 @@
 <div class="md-lg">
   <nav class="navbar-dark bg-dark d-flex justify-content-around">
-    <a class="nav-link navbar-brand ml-4 " href="#">code(_c)ave</a>
-    <form class="form-inline">
+    <a class="nav-link navbar-brand ml-4 mt-3 " href="#">code(_c)ave</a>
+    <form class="form-inline mt-3 mb-3">
       <input
         class="form-control mr-sm-2 bg-dark"
         type="search"
@@ -10,11 +10,19 @@
       />
       <button class="btn btn-info" type="submit">Buscar</button>
     </form>
-    <button class="btn btn-info btn-sm" *ngIf="!isLogged">
-      <a class="nav-link" (click)="ingresar()">Ingresar</a>
+    <button
+      class="btn btn-info mt-3 mb-3 "
+      *ngIf="!isLogged"
+      (click)="ingresar()"
+    >
+      Ingresar
     </button>
-    <button class="btn btn-info btn-sm" *ngIf="isLogged">
-      <a class="nav-link" (click)="logout()">Salir</a>
+    <button
+      class="btn btn-info btn-sm justify-content-between d-flex mt-3 mb-3"
+      *ngIf="isLogged"
+      (click)="logout()"
+    >
+      Salir
     </button>
   </nav>
 </div>
@@ -23,27 +31,33 @@
   <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
       <div class="bg-dark p-4 ">
-        <form class="form-inline search d-flex justify-content-between">
+        <form class="form-inline search d-flex justify-content-center">
           <div>
             <input
-              class="form-control mr-sm-2 bg-dark"
+              class="form-control bg-dark"
               type="search"
               placeholder="Que necesitas?"
               aria-label="Search"
             />
-            <button class="btn btn-info" type="submit">Buscar</button>
+            <button class="form-control btn btn-info" type="submit">
+              Buscar
+            </button>
           </div>
-          <button class="btn btn-info btn-sm" *ngIf="!isLogged">
-            <a class="nav-link" (click)="ingresar()">Ingresar</a>
-          </button>
-          <button class="btn btn-info btn-sm" *ngIf="isLogged">
-            <a class="nav-link" (click)="logout()">Salir</a>
-          </button>
         </form>
       </div>
     </div>
-    <nav class="navbar navbar-dark bg-dark">
-      <a class="nav-link navbar-brand ml-4 " href="#">code(_c)ave</a>
+    <nav class="navbar navbar-dark bg-dark justify-content-between d-flex">
+      <a class="nav-link navbar-brand">code(_c)ave</a>
+
+      <button class="btn btn-info " *ngIf="!isLogged" (click)="loginGoogle()">
+        Ingresar
+      </button>
+      <button
+        type="button"
+        class="btn btn-info "
+        *ngIf="isLogged"
+        (click)="logout()"
+      ></button>
       <button
         class="navbar-toggler"
         type="button"

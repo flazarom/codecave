@@ -37,6 +37,14 @@ export class ProfileComponent implements OnInit {
     this.userService.getUser(username).subscribe(res => {
       this.user = res as User;
       console.log(this.user);
+      var imgSrc = new Image();
+      imgSrc.src = this.user.photoUrl;
+      if (imgSrc.width > 50) {
+        console.log("ee");
+      } else {
+        this.user.photoUrl =
+          "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png";
+      }
     });
   }
 }

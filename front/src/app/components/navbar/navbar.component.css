@@ -21,3 +21,13 @@
 .modal-content {
   background-color: #32383e;
 }
+
+a {
+display: block;
+}
+
+span {
+  color: white;
+  display: block;
+
+}

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+
+
 h1,
 h2,
 h3,
@@ -8,9 +12,30 @@ html,
 body,
 a,
 p,
-label {
+label
+ {
   color: white;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+body,
+a,
+p,
+label,
+input,
+button
+
+ {
+  color: white;
+  font-family: 'Ubuntu';
+}
+
 
 .div {
   display: flex;
@@ -23,3 +48,4 @@ label {
 #section {
   display: block;
 }
+
