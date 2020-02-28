@@ -10,7 +10,10 @@ import { Component, OnInit } from "@angular/core";
   providers: [PreguntaService]
 })
 export class PreguntasComponent implements OnInit {
-  constructor(public preguntaService: PreguntaService, private route: Router) {}
+  cargando: boolean = true;
+  constructor(public preguntaService: PreguntaService, private route: Router) {
+
+  }
 
   ngOnInit() {
     this.getPreguntas();
