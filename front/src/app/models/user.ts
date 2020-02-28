@@ -8,7 +8,8 @@ export class User {
     web = "",
     github = "",
     gitlab = "",
-    bitbucket = ""
+    bitbucket = "",
+    medallas = []
   ) {
     this._id = _id;
     this.username = username;
@@ -19,6 +20,7 @@ export class User {
     this.github = github;
     this.gitlab = gitlab;
     this.bitbucket = bitbucket;
+    this.medallas = medallas;
   }
 
   _id: string;
@@ -30,4 +32,5 @@ export class User {
   github: string;
   gitlab: string;
   bitbucket: string;
+  medallas: Array<String>;
 }

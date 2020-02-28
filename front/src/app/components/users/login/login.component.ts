@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
     web: "",
     github: "",
     gitlab: "",
-    bitbucket: ""
+    bitbucket: "",
+    medallas: []
   };
 
   ngOnInit(): void {}
@@ -115,7 +116,8 @@ export class LoginComponent implements OnInit {
         web: document.forms["registerForm"]["web"].value,
         github: document.forms["registerForm"]["github"].value,
         gitlab: document.forms["registerForm"]["gitlab"].value,
-        bitbucket: document.forms["registerForm"]["bitbucket"].value
+        bitbucket: document.forms["registerForm"]["bitbucket"].value,
+        medallas: ["newfulluser"]
       };
       this.userService.postUser(userData).subscribe(res => {
         console.log("posted");

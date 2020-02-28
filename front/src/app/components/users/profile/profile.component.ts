@@ -19,9 +19,16 @@ export class ProfileComponent implements OnInit {
     web: "",
     github: "",
     gitlab: "",
-    bitbucket: ""
+    bitbucket: "",
+    medallas: []
   };
 
+  medallas: Array<String>;
+  medallasAlt = {
+    dev: "Codecavedev - Desarrolló Codecave",
+    python1: "Iniciado en Python - Contestó 5 preguntas de Python",
+    java1: "Iniciado en Java - Contestó 5 preguntas de Java"
+  };
   constructor(
     private activeRoute: ActivatedRoute,
     private userService: UserService
@@ -45,6 +52,7 @@ export class ProfileComponent implements OnInit {
         this.user.photoUrl =
           "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png";
       }
+      this.medallas = res.medallas;
     });
   }
 }
