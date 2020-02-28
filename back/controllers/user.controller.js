@@ -16,7 +16,8 @@ userCtrl.createUser = async (req, res, next) => {
     web: req.body.web,
     github: req.body.github,
     gitlab: req.body.gitlab,
-    bitbucket: req.body.bitbucket
+    bitbucket: req.body.bitbucket,
+    medallas: req.body.medallas
   });
   await user.save();
   res.json({ status: "User created" });
@@ -38,7 +39,8 @@ userCtrl.editUser = async (req, res, next) => {
     web: req.body.web,
     github: req.body.github,
     gitlab: req.body.gitlab,
-    bitbucket: req.body.bitbucket
+    bitbucket: req.body.bitbucket,
+    medallas: req.body.medallas
   };
   await User.findByIdAndUpdate(id, { $set: user }, { new: true });
   res.json({ status: "User Updated" });
