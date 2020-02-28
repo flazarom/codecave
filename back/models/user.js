@@ -13,7 +13,8 @@ const userSchema = new Schema({
   web: { type: String, required: false },
   github: { type: String, required: false },
   gitlab: { type: String, required: false },
-  bitbucket: { type: String, required: false }
+  bitbucket: { type: String, required: false },
+  medallas: { type: Array, required: false }
 });
 
 module.exports = mongoose.model("User", userSchema);
