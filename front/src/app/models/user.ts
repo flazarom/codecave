@@ -32,5 +32,5 @@ export class User {
   github: string;
   gitlab: string;
   bitbucket: string;
-  medallas: Array<String>;
+  medallas: Array<string>;
 }

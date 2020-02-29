@@ -1,3 +1,4 @@
+import { MedalService } from "./../../../services/medal.service";
 import { UserService } from "./../../../services/user.service";
 import { User } from "./../../../models/user";
 import { AuthService } from "./../../../services/auth.service";
@@ -23,15 +24,12 @@ export class ProfileComponent implements OnInit {
     medallas: []
   };
 
-  medallas: Array<String>;
-  medallasAlt = {
-    dev: "Codecavedev - Desarrolló Codecave",
-    python1: "Iniciado en Python - Contestó 5 preguntas de Python",
-    java1: "Iniciado en Java - Contestó 5 preguntas de Java"
-  };
+  medallas = [];
+  altMedallas = [];
   constructor(
     private activeRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private medalService: MedalService
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +51,18 @@ export class ProfileComponent implements OnInit {
           "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png";
       }
       this.medallas = res.medallas;
+      this.setAlts();
     });
+  }
+
+  setAlts() {
+    // this.medalService.getMedal(this.medallas[0]).subscribe(res => {
+    //   console.log(res.medaldesc);
+    // });
+    for (let i = 0; i < this.medallas.length; i++) {
+      this.medalService.getMedal(this.medallas[i]).subscribe(medal => {
+        this.altMedallas[i] = medal.medaldesc;
+      });
+    }
   }
 }
