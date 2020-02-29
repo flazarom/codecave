@@ -6,3 +6,45 @@
 .medal {
   float: left;
 }
+
+.img-profile {
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 200px;
+  max-height: 200px;
+}
+
+.medalModal {
+  background-color: #393e46;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 700px) {
+  .medalModal {
+    margin-top: 20%;
+  }
+}
+
+.medalla-desc{
+}
+
+.medalla {
+width: 30%;
+display: block;
+}
+
+.medalla-img {
+  width: 100%;
+  display: block;
+}
+
+.desc {
+  width: 65%;
+  display: block;
+
+}
+.desc-p {
+  width: 100%;
+  display: block;
+}

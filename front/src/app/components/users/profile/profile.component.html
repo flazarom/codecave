@@ -5,6 +5,8 @@
     >
       <img
         src="{{ user.photoUrl }}"
+        width="200px"
+        height="200px"
         class="rounded-circle img-thumbnail img-profile"
         alt="profile"
       />
@@ -19,21 +21,59 @@
       <div class="git"></div>
     </div>
     <div class="profile-section medals col-sm-12 col-md-12 col-lg-5">
-      <b>
-        <h3>Medallas</h3>
-      </b>
-      <div *ngFor="let medalla of medallas" class="justify-content-start ">
-        <img
-          src="../../../../assets/images/medals/{{ medalla }}.png"
-          class="medal mr-2"
-        />
-      </div>
-      <div
-        *ngFor="let altMedalla of altMedallas"
-        class="justify-content-start "
+      <a
+        data-target="#medalModal"
+        data-toggle="modal"
+        class="MainNavText"
+        id="MainNavHelp"
+        href="#medalModal"
       >
-        <p>{{ altMedalla }}</p>
+        <b>
+          <h3>Medallas</h3>
+        </b>
+        <div *ngFor="let medalla of medallas" class="justify-content-start">
+          <img
+            src="../../../../assets/images/medals/{{ medalla }}.png"
+            class="medal mr-2"
+          />
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- modal  -->
+<div class="container col-md-12">
+  <div class="row mt-4 justify-content-center d-flex">
+    <div
+      class="modal fade"
+      id="medalModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="medalModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="card w-75 medalModal">
+          <div class="card-body">
+            <h5 class="card-title">Medallas</h5>
+            <div class="card-text">
+              <div class="medalla-desc">
+                <div *ngFor="let medalla of medallas">
+                  <img
+                    class="medalla-img mt-4"
+                    src="../../../../assets/images/medals/{{ medalla }}.png"
+                    class="medal mr-2"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="btn btn-info">Cerrar</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- fin modal -->

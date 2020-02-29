@@ -26,8 +26,10 @@ export class ProfileComponent implements OnInit {
 
   medallas = [];
   altMedallas = [];
+
   constructor(
     private activeRoute: ActivatedRoute,
+    private authService: AuthService,
     private userService: UserService,
     private medalService: MedalService
   ) {}
@@ -56,12 +58,9 @@ export class ProfileComponent implements OnInit {
   }
 
   setAlts() {
-    // this.medalService.getMedal(this.medallas[0]).subscribe(res => {
-    //   console.log(res.medaldesc);
-    // });
     for (let i = 0; i < this.medallas.length; i++) {
       this.medalService.getMedal(this.medallas[i]).subscribe(medal => {
-        this.altMedallas[i] = medal.medaldesc;
+        this.altMedallas.push(medal.medaldesc);
       });
     }
   }
