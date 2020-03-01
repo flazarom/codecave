@@ -29,7 +29,7 @@
         href="#medalModal"
       >
         <b>
-          <h3>Reconocimientos</h3>
+          <h3 *ngIf="!noMedals">Reconocimientos</h3>
         </b>
         <div *ngFor="let medalla of medallas" class="justify-content-start">
           <img

@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit {
 
   medallas = [];
   altMedallas = [];
+  noMedals;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -62,6 +63,9 @@ export class ProfileComponent implements OnInit {
       this.medalService.getMedal(this.medallas[i]).subscribe(medal => {
         this.altMedallas.push(medal);
       });
+    }
+    if (this.medallas.length == 0) {
+      this.noMedals = true;
     }
   }
 
