@@ -60,8 +60,12 @@ export class ProfileComponent implements OnInit {
   setAlts() {
     for (let i = 0; i < this.medallas.length; i++) {
       this.medalService.getMedal(this.medallas[i]).subscribe(medal => {
-        this.altMedallas.push(medal.medaldesc);
+        this.altMedallas.push(medal);
       });
     }
+  }
+
+  getMedals() {
+    return this.altMedallas;
   }
 }

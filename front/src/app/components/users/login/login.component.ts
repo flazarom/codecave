@@ -117,8 +117,13 @@ export class LoginComponent implements OnInit {
         github: document.forms["registerForm"]["github"].value,
         gitlab: document.forms["registerForm"]["gitlab"].value,
         bitbucket: document.forms["registerForm"]["bitbucket"].value,
-        medallas: ["newfulluser"]
+        medallas: []
       };
+      let bioValue: string = document.forms["registerForm"]["bio"].value;
+      console.log(bioValue);
+      if (bioValue.length >= 16) {
+        userData.medallas.push("newfulluser");
+      }
       this.userService.postUser(userData).subscribe(res => {
         console.log("posted");
       });

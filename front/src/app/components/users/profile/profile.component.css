@@ -3,6 +3,11 @@
   margin-left: auto;
 }
 
+.medals {
+  margin: auto;
+  margin-left: auto;
+}
+
 .medal {
   float: left;
 }
@@ -26,25 +31,9 @@
   }
 }
 
-.medalla-desc{
-}
-
-.medalla {
-width: 30%;
-display: block;
-}
-
-.medalla-img {
+.tabla{
   width: 100%;
   display: block;
 }
 
-.desc {
-  width: 65%;
-  display: block;
 
-}
-.desc-p {
-  width: 100%;
-  display: block;
-}

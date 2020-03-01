@@ -12,7 +12,7 @@
       />
     </div>
 
-    <div class="profile-section details col-sm-6 col-md-6 col-lg-3">
+    <div class="profile-section details col-sm-6 col-md-6 col-lg-4">
       <b>
         <h3>{{ user.username }}</h3>
       </b>
@@ -20,7 +20,7 @@
       <p>{{ user.bio }}</p>
       <div class="git"></div>
     </div>
-    <div class="profile-section medals col-sm-12 col-md-12 col-lg-5">
+    <div class="profile-section medals col-sm-12 col-md-12 col-lg-4">
       <a
         data-target="#medalModal"
         data-toggle="modal"
@@ -29,7 +29,7 @@
         href="#medalModal"
       >
         <b>
-          <h3>Medallas</h3>
+          <h3>Reconocimientos</h3>
         </b>
         <div *ngFor="let medalla of medallas" class="justify-content-start">
           <img
@@ -54,20 +54,35 @@
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
-        <div class="card w-75 medalModal">
+        <div class="card w-100 medalModal">
           <div class="card-body">
             <h5 class="card-title">Medallas</h5>
-            <div class="card-text">
-              <div class="medalla-desc">
-                <div *ngFor="let medalla of medallas">
-                  <img
-                    class="medalla-img mt-4"
-                    src="../../../../assets/images/medals/{{ medalla }}.png"
-                    class="medal mr-2"
-                  />
-                </div>
-              </div>
-            </div>
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Medalla</th>
+                  <th scope="col">Título</th>
+                  <th scope="col">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let medal of getMedals()">
+                  <th scope="row">
+                    <img
+                      src="../../../../assets/images/medals/{{
+                        medal.medalid
+                      }}.png"
+                    />
+                  </th>
+                  <td>
+                    <p class="mt-1">{{ medal.medalname }}</p>
+                  </td>
+                  <td>
+                    <p class="mt-1">{{ medal.medaldesc }}</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <a href="#" class="btn btn-info">Cerrar</a>
         </div>
@@ -77,3 +92,9 @@
 </div>
 
 <!-- fin modal -->
+
+<!-- <img
+                src="../../../../assets/images/medals/{{ medal.medalname }}.png"
+              />
+              <p>{{ medal.medaldesc }}</p>
+             -->

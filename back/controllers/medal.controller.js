@@ -9,6 +9,7 @@ medalCtrl.getMedals = async (req, res, next) => {
 
 medalCtrl.createMedal = async (req, res, next) => {
     const medal = new Medal({
+        medalid: req.body.medalid,
         medalname: req.body.medalname,
         medaldesc: req.body.medaldesc
     });
@@ -17,14 +18,15 @@ medalCtrl.createMedal = async (req, res, next) => {
 };
 
 medalCtrl.getMedal = async (req, res, next) => {
-    const { medalname } = req.params;
-    const medal = await Medal.findOne({ medalname: medalname });
+    const { medalid } = req.params;
+    const medal = await Medal.findOne({ medalid: medalid });
     res.json(medal);
 };
 
 medalCtrl.editMedal = async (req, res, next) => {
     const { id } = req.params;
     const medal = {
+        medalid: req.body.medalid,
         medalname: req.body.medalname,
         medaldesc: req.body.medaldesc
     };
