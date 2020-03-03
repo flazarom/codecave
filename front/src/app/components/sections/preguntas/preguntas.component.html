@@ -18,21 +18,17 @@
   </div>
 </div>
 
-<div class="body-preguntas mt-2 justify-content-center d-flex">
-  <div class="lista-preguntas col-sm-12 com-md-12 col-lg-6">
+<div class="pregunta col-lg-9">
+  <div
+    class="pregunta-section body-preguntas mt-2 col-sm-12 com-md-12 col-lg-9"
+  >
     <div *ngFor="let pregunta of preguntaService.preguntas">
       <div class="card bg-dark text-white mb-2 mt-2">
         <div class="card-header">
-          <p class="card-text">
-            {{ pregunta.categoria }}
-          </p>
+          {{ pregunta.categoria }}
         </div>
-        <div class="card-body">
+        <div class="card-body card-a" (click)="verPregunta(pregunta._id)">
           <h4 class="card-title">{{ pregunta.pregunta }}</h4>
-
-          <!-- <p>
-            {{ pregunta.desarrollo }}
-          </p> -->
         </div>
 
         <div class="card-bottom justify-content-between d-flex mb-3">
@@ -45,7 +41,7 @@
     </div>
   </div>
 
-  <div class="profile col-sm-12 com-md-12 col-lg-3 mt-2">
+  <div class="pregunta-section profile mt-2 col-sm-12 com-md-12 col-lg-3">
     <app-liteprofile></app-liteprofile>
   </div>
 </div>

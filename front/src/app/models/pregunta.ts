@@ -1,5 +1,12 @@
 export class Pregunta {
-  constructor(_id = "", pregunta = "", categoria = "", desarrollo = "", likes = 0, creador = "") {
+  constructor(
+    _id = "",
+    pregunta = "",
+    categoria = "",
+    desarrollo = "",
+    likes = [],
+    creador = ""
+  ) {
     this._id = _id;
     this.pregunta = pregunta;
     this.categoria = categoria;
@@ -12,6 +19,6 @@ export class Pregunta {
   pregunta: string;
   categoria: string;
   desarrollo: string;
-  likes: number;
+  likes: string[];
   creador: string;
 }

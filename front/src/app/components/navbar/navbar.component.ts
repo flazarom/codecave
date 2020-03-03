@@ -86,8 +86,6 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.afAuth.auth.signOut();
-    this.router.navigate([""]);
-    window.location.reload();
   }
 
   gotoProfile() {
@@ -104,5 +102,9 @@ export class NavbarComponent implements OnInit {
           });
       }
     });
+  }
+
+  gotoHome() {
+    this.router.navigate([""]);
   }
 }

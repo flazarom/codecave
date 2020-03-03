@@ -1,25 +1,32 @@
-<div class="d-flex justify-content-between bg-dark">
-  <button
-    [ngClass]="{ active: oTutoriales == true }"
-    class="btn btn-dark nav-button-4"
-    (click)="mostrarTutoriales()"
-  >
-    <a class="nav-link " href="#">Tutoriales</a>
-  </button>
-  <button
-    [ngClass]="{ active: oPreguntas == true }"
-    class="btn btn-dark nav-button-4"
-    (click)="mostrarPreguntas()"
-  >
-    <a class="nav-link" href="#">Preguntas</a>
-  </button>
-  <button
-    [ngClass]="{ active: oSnippets == true }"
-    class="btn btn-dark nav-button-4"
-    (click)="mostrarSnippets()"
-  >
-    <a class=" nav-link" href="#">Snippets</a>
-  </button>
+<div class="bg-dark">
+  <div class="button-portal col-lg-4 col-md-4 col-sm-12">
+    <button
+      [ngClass]="{ active: oTutoriales == true }"
+      class="btn btn-dark nav-button-4"
+      (click)="mostrarTutoriales()"
+    >
+      <a class="nav-link " href="#">Tutoriales</a>
+    </button>
+  </div>
+
+  <div class="button-portal col-lg-4 col-md-4 col-sm-12">
+    <button
+      [ngClass]="{ active: oPreguntas == true }"
+      class="btn btn-dark nav-button-4 "
+      (click)="mostrarPreguntas()"
+    >
+      <a class="nav-link" href="#">Preguntas</a>
+    </button>
+  </div>
+  <div class="button-portal col-lg-4 col-md-4 col-sm-12">
+    <button
+      [ngClass]="{ active: oSnippets == true }"
+      class="btn btn-dark nav-button-4 "
+      (click)="mostrarSnippets()"
+    >
+      <a class=" nav-link" href="#">Snippets</a>
+    </button>
+  </div>
 </div>
 
 <div id="tutoriales" *ngIf="oTutoriales == true">
@@ -33,4 +40,41 @@
 </div>
 <div class="empty-img" *ngIf="empty == true">
   <app-empty></app-empty>
+</div>
+
+<!-- floating button  -->
+<div class="menu pmd-floating-action" role="navigation">
+  <a
+    href="javascript:void(0);"
+    class="pmd-floating-action-btn btn btn-sm pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info"
+    data-title="Tutorial"
+  >
+    <span class="pmd-floating-hidden">Tutorial</span>
+    <i class="material-icons">format_list_numbered</i>
+  </a>
+  <a
+    href="javascript:void(0);"
+    class="pmd-floating-action-btn btn btn-sm pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info"
+    data-title="Pregunta"
+  >
+    <span class="pmd-floating-hidden">Pregunta</span>
+    <i class="material-icons">question_answer</i>
+  </a>
+  <a
+    href="javascript:void(0);"
+    class="pmd-floating-action-btn btn btn-sm pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info"
+    data-title="Snippet"
+  >
+    <span class="pmd-floating-hidden">Snippet</span>
+    <i class="material-icons">code</i>
+  </a>
+
+  <a
+    class="pmd-floating-action-btn btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info"
+    data-title="Agregar"
+    href="javascript:void(0);"
+  >
+    <span class="pmd-floating-hidden">Primary</span>
+    <i class="material-icons pmd-sm">add</i>
+  </a>
 </div>

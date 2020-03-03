@@ -8,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "app-preguntas",
   templateUrl: "./preguntas.component.html",
-  styleUrls: ["./preguntas.component.css"],
+  styleUrls: ["./../../../app.component.css", "./preguntas.component.css"],
   providers: [PreguntaService]
 })
 export class PreguntasComponent implements OnInit {
@@ -30,12 +30,5 @@ export class PreguntasComponent implements OnInit {
 
   verPregunta(_id: String) {
     this.router.navigate(["preguntas/" + _id]);
-  }
-
-  like(pregunta: Pregunta) {
-    pregunta.likes++;
-    this.preguntaService.putPregunta(pregunta).subscribe(res => {
-      this.getPreguntas();
-    });
   }
 }
