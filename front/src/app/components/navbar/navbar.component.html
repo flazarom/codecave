@@ -1,29 +1,30 @@
 <div class="md-lg">
   <nav class="navbar-dark bg-dark d-flex justify-content-around">
     <a class="nav-link navbar-brand ml-4 mt-3 " href="#">code(_c)ave</a>
-    <form class="form-inline mt-3 mb-3">
-      <input
-        class="form-control mr-sm-2 bg-dark"
-        type="search"
-        placeholder="Que necesitas?"
-        aria-label="Search"
-      />
-      <button class="btn btn-info" type="submit">Buscar</button>
-    </form>
-    <button
-      class="btn btn-info mt-3 mb-3 "
-      *ngIf="!isLogged"
-      (click)="ingresar()"
-    >
-      Ingresar
-    </button>
-    <button
-      class="btn btn-info btn-sm justify-content-between d-flex mt-3 mb-3"
-      *ngIf="isLogged"
-      (click)="logout()"
-    >
-      Salir
-    </button>
+
+    <div class="logged-buttons justify-content-center d-flex">
+      <button
+        class="btn btn-info mt-3 mb-3 "
+        *ngIf="!isLogged"
+        (click)="ingresar()"
+      >
+        Ingresar
+      </button>
+      <button
+        class="btn btn-info btn-sm justify-content-between d-flex mt-3 mb-3 mr-3"
+        *ngIf="isLogged"
+        (click)="gotoProfile()"
+      >
+        Mi perfil
+      </button>
+      <button
+        class="btn btn-danger btn-sm justify-content-between d-flex mt-3 mb-3"
+        *ngIf="isLogged"
+        (click)="logout()"
+      >
+        Salir
+      </button>
+    </div>
   </nav>
 </div>
 

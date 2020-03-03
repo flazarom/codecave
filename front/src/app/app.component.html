@@ -1,9 +1,11 @@
-<div *ngIf="!cargando; else showLoading">
-  <app-navbar></app-navbar>
-  <router-outlet></router-outlet>
-</div>
-<ng-template #showLoading>
-  <div *ngIf="cargando" >
-    <div class="lds-hourglass"></div>
+<div *ngIf="cargando" class="loading justify-content-center d-flex">
+  <div class="loading-spinner">
+    <div class="loading-c">
+      <div></div>
+    </div>
   </div>
-</ng-template>
+</div>
+
+<div [hidden]="cargando">
+  <app-navbar></app-navbar> <router-outlet></router-outlet>
+</div>

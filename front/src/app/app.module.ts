@@ -1,3 +1,4 @@
+import { LiteprofileComponent } from "./components/users/liteprofile/liteprofile.component";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -18,9 +19,9 @@ import { ProfileComponent } from "./components/users/profile/profile.component";
 import { RegisterComponent } from "./components/users/register/register.component";
 import { LoginComponent } from "./components/users/login/login.component";
 import { HttpClientModule } from "@angular/common/http";
-import { PreguntaComponent } from "./components/getOne/pregunta/pregunta.component";
-import { SnippetComponent } from "./components/getOne/snippet/snippet.component";
-import { TutorialComponent } from "./components/getOne/tutorial/tutorial.component";
+import { TutorialComponent } from "./components/getOne/tutorial/onetutorial.component";
+import { SnippetComponent } from "./components/getOne/snippet/onesnippet.component";
+import { PreguntaComponent } from "./components/getOne/pregunta/onepregunta.component";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TutorialComponent } from "./components/getOne/tutorial/tutorial.compone
     LoginComponent,
     PreguntaComponent,
     SnippetComponent,
-    TutorialComponent
+    TutorialComponent,
+    LiteprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,7 @@ import { TutorialComponent } from "./components/getOne/tutorial/tutorial.compone
     AngularFirestoreModule,
     HttpClientModule
   ],
-  providers: [AngularFireAuth, ProfileComponent],
+  providers: [AngularFireAuth, ProfileComponent, LiteprofileComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

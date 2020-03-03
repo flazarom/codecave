@@ -1,6 +1,6 @@
-import { PreguntaComponent } from "./components/getOne/pregunta/pregunta.component";
-import { TutorialComponent } from "./components/getOne/tutorial/tutorial.component";
-import { SnippetComponent } from "./components/getOne/snippet/snippet.component";
+import { TutorialComponent } from "./components/getOne/tutorial/onetutorial.component";
+import { SnippetComponent } from "./components/getOne/snippet/onesnippet.component";
+import { PreguntaComponent } from "./components/getOne/pregunta/onepregunta.component";
 import { LoginComponent } from "./components/users/login/login.component";
 import { RegisterComponent } from "./components/users/register/register.component";
 import { PortalComponent } from "./components/portal/portal.component";

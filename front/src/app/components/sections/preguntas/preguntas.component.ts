@@ -1,4 +1,6 @@
-import { Router } from '@angular/router';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AuthService } from "./../../../services/auth.service";
+import { Router } from "@angular/router";
 import { Pregunta } from "./../../../models/pregunta";
 import { PreguntaService } from "./../../../services/pregunta.service";
 import { Component, OnInit } from "@angular/core";
@@ -11,9 +13,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class PreguntasComponent implements OnInit {
   cargando: boolean = true;
-  constructor(public preguntaService: PreguntaService, private route: Router) {
-
-  }
+  constructor(
+    public preguntaService: PreguntaService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getPreguntas();
@@ -25,17 +28,14 @@ export class PreguntasComponent implements OnInit {
     });
   }
 
-  verPregunta(_id: String){
-    this.route.navigate(['preguntas/'+_id]);
+  verPregunta(_id: String) {
+    this.router.navigate(["preguntas/" + _id]);
   }
 
-  darLike(pregunta: Pregunta){
+  like(pregunta: Pregunta) {
     pregunta.likes++;
-    this.preguntaService.putPregunta(pregunta).subscribe(
-      res => {
-        this.getPreguntas();
-      }
-    )
+    this.preguntaService.putPregunta(pregunta).subscribe(res => {
+      this.getPreguntas();
+    });
   }
-
 }

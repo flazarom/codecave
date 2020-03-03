@@ -9,8 +9,8 @@ export class AppComponent {
   title = "codecave";
   cargando: boolean = true;
 
-  constructor(){
-    setTimeout(()=>{
+  constructor() {
+    setTimeout(() => {
       this.cargando = false;
     }, 2000);
   }

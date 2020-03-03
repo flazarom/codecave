@@ -1,17 +1,15 @@
 .profile-section {
   margin: auto;
   margin-left: auto;
-  margin-right: auto;
 }
-
-.details {
-  margin-left: auto;
-}
-
 
 .medals {
   margin: auto;
   margin-left: auto;
+}
+
+.medals a {
+  text-decoration: none;
 }
 
 .medal {
@@ -42,4 +40,6 @@
   display: block;
 }
 
-
+.btn-google {
+  background-color: #DB4437;
+}

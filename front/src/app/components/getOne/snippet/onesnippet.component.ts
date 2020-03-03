@@ -5,8 +5,8 @@ import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-snippet",
-  templateUrl: "./snippet.component.html",
-  styleUrls: ["./snippet.component.css"]
+  templateUrl: "./onesnippet.component.html",
+  styleUrls: ["./onesnippet.component.css"]
 })
 export class SnippetComponent implements OnInit {
   snippet: Snippet = {

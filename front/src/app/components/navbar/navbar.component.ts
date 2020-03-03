@@ -1,12 +1,9 @@
 import { AngularFirestore } from "@angular/fire/firestore";
 import { AuthService } from "./../../services/auth.service";
-import { AppRoutingModule } from "./../../app-routing.module";
 import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { auth, app } from "firebase/app";
-import { AotCompiler } from "@angular/compiler";
+import { auth } from "firebase/app";
 import { Router } from "@angular/router";
-import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-navbar",
@@ -90,5 +87,22 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.afAuth.auth.signOut();
     this.router.navigate([""]);
+    window.location.reload();
+  }
+
+  gotoProfile() {
+    this.authService.isAuth().subscribe(user => {
+      if (user) {
+        // comprueba si en la colección de firebase ya existe el ID del usuario
+        this.fs
+          .collection("regUsers")
+          .doc(user.uid)
+          .ref.get()
+          .then(doc => {
+            let username = doc.get("username");
+            this.router.navigate(["users", username]);
+          });
+      }
+    });
   }
 }
