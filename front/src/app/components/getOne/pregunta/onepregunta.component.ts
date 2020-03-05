@@ -1,3 +1,4 @@
+import { auth } from "firebase/app";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { User } from "./../../../models/user";
 import { UserService } from "./../../../services/user.service";
@@ -7,6 +8,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { PreguntaService } from "./../../../services/pregunta.service";
 import { Pregunta } from "./../../../models/pregunta";
 import { Component, OnInit } from "@angular/core";
+import { FirebaseAuth } from "@angular/fire";
 
 @Component({
   selector: "app-pregunta",
@@ -37,72 +39,90 @@ export class PreguntaComponent implements OnInit {
   };
 
   likes: number;
+  liked: boolean;
 
   constructor(
     public preguntaService: PreguntaService,
     private activeRoute: ActivatedRoute,
-    private userService: UserService,
-    public afAuth: AngularFireAuth,
     private authService: AuthService,
     private fs: AngularFirestore,
-    private router: Router
+    private userService: UserService
   ) {}
 
-  ngOnInit() {
-    this.activeRoute.params.subscribe(res => {
-      this.getPreguntaData(res.id);
+  async ngOnInit() {
+    await this.activeRoute.params.subscribe(res => {
+      this.getUser();
+      this.getPregunta(res.id);
     });
-    this.getUser();
-    this.getPregunta();
-  }
-
-  getPreguntaData(_id: string) {
-    this.preguntaService.getPregunta(_id).subscribe(res => {
-      this.pregunta = res as Pregunta;
-      console.log(this.pregunta);
-    });
-  }
-
-  getPregunta() {
-    this.preguntaService.getPreguntas().subscribe(res => {
-      this.preguntaService.preguntas = res as Pregunta[];
-      this.likes = this.pregunta.likes.length;
-    });
+    await this.resolveAfter();
+    this.getLiked();
   }
 
   getUser() {
     this.authService.isAuth().subscribe(user => {
       if (user) {
+        // comprueba si en la colección de firebase ya existe el ID del usuario
         this.fs
           .collection("regUsers")
           .doc(user.uid)
           .ref.get()
           .then(doc => {
-            let username = doc.get("username");
-            this.user.username = username;
+            this.userService.getUser(doc.get("username")).subscribe(user => {
+              this.user = user as User;
+            });
           });
       }
     });
   }
 
-  like(pregunta: Pregunta) {
-    this.authService.isAuth().subscribe(logged => {
-      if (logged) {
-        let liked;
-        for (let i = 0; i < pregunta.likes.length; i++) {
-          if (pregunta.likes[i] == this.user.username) {
-            liked = true;
-            break;
-          }
-        }
-        if (!liked) {
-          pregunta.likes.push(this.user.username);
-        }
-      }
+  resolveAfter() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+      }, 1500);
     });
-    this.preguntaService.putPregunta(pregunta).subscribe(res => {
+  }
+
+  async getPregunta(_id: string) {
+    await this.preguntaService.getPregunta(_id).subscribe(res => {
+      this.pregunta = res as Pregunta;
       this.likes = this.pregunta.likes.length;
-      this.getPregunta();
     });
+  }
+
+  getLiked() {
+    if (this.pregunta.likes.includes(this.user.username)) {
+      this.liked = true;
+    } else {
+      this.liked = false;
+    }
+  }
+
+  clearNull() {
+    if (this.pregunta.likes.includes(null)) {
+      this.pregunta.likes = this.pregunta.likes.filter(e => e !== null);
+    }
+    if (this.pregunta.likes.includes("")) {
+      this.pregunta.likes = this.pregunta.likes.filter(e => e !== "");
+    }
+  }
+
+  like(pregunta: Pregunta) {
+    if (pregunta.likes.includes(this.user.username)) {
+      pregunta.likes = pregunta.likes.filter(e => e !== this.user.username);
+    } else {
+      if (this.user.username != "") {
+        this.pregunta.likes.push(this.user.username);
+      }
+    }
+    this.preguntaService.putPregunta(pregunta).subscribe(res => {
+      this.activeRoute.params.subscribe(res => {
+        this.likes = pregunta.likes.length;
+        this.getPregunta(res.id);
+        console.log(this.pregunta.likes);
+      });
+    });
+    this.getLiked();
+    this.clearNull();
   }
 }
