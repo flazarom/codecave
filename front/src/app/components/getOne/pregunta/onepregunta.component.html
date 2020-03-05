@@ -1,25 +1,27 @@
-<div class="card bg-dark text-white mb-2 mt-2">
-  <div class="card-header">
-    {{ pregunta.pregunta }}
-    {{ pregunta._id }}
+<div class="pregunta col-lg-9 ">
+  <div class="pregunta-section profile mt-2 col-lg-3">
+    <app-profileowner></app-profileowner>
   </div>
-  <div class="card-body">
-    <p class="card-text">
-      Lenguaje:
-      {{ pregunta.categoria }}
-    </p>
-    <p>
-      {{ pregunta.desarrollo }}
-    </p>
-    <button [hidden]="!liked" (click)="like(pregunta)" class="btn btn-danger">
-      <i class="fa fa-heart"></i> {{ likes }}
-    </button>
-    <button
-      [hidden]="liked"
-      (click)="like(pregunta)"
-      class="btn btn-light nolike"
-    >
-      <i class="fa fa-heart"></i> {{ likes }}
-    </button>
+  <div class="card bg-dark text-white pregunta-section mt-4 col-lg-8">
+    <div class="card-header justify-content-between d-flex">
+      <p>{{ pregunta.pregunta }}</p>
+      <p>{{ pregunta.categoria }}</p>
+    </div>
+    <div class="card-body">
+      <p class="card-text"></p>
+      <p>
+        {{ pregunta.desarrollo }}
+      </p>
+      <button [hidden]="!liked" (click)="like(pregunta)" class="btn btn-danger">
+        <i class="fa fa-heart"></i> {{ likes }}
+      </button>
+      <button
+        [hidden]="liked"
+        (click)="like(pregunta)"
+        class="btn btn-light nolike"
+      >
+        <i class="fa fa-heart"></i> {{ likes }}
+      </button>
+    </div>
   </div>
 </div>

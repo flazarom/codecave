@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
 
 body {
   background-color: #222831;
 }
-
 
 h1,
 h2,
@@ -17,13 +16,10 @@ a,
 p,
 label,
 input,
-button
-
- {
+button {
   color: white;
-  font-family: 'Ubuntu';
+  font-family: "Ubuntu";
 }
-
 
 .div {
   display: flex;
@@ -37,6 +33,6 @@ button
   display: block;
 }
 
-.card-a {
+.cursor-hand {
   cursor: pointer;
 }

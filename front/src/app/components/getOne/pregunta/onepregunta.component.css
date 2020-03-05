@@ -1,3 +1,12 @@
 .nolike {
   color: black;
 }
+
+.pregunta-section {
+  float: left;
+}
+
+.pregunta {
+  margin-left: auto;
+  margin-right: auto;
+}

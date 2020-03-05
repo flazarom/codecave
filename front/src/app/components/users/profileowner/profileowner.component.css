@@ -1,0 +1,45 @@
+.profile-section {
+  margin: auto;
+  margin-left: auto;
+}
+
+.medals {
+  margin: auto;
+  margin-left: auto;
+}
+
+.medals a {
+  text-decoration: none;
+}
+
+.medal {
+  float: left;
+}
+
+.img-profile {
+  min-width: 80px;
+  max-width: 80px;
+  min-height: 80px;
+  max-height: 80px;
+}
+
+.medalModal {
+  background-color: #393e46;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 700px) {
+  .medalModal {
+    margin-top: 20%;
+  }
+}
+
+.tabla {
+  width: 100%;
+  display: block;
+}
+
+.btn-google {
+  background-color: #db4437;
+}
