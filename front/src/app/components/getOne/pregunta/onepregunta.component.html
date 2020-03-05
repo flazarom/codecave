@@ -11,7 +11,15 @@
     <p>
       {{ pregunta.desarrollo }}
     </p>
-    {{ likes }}
-    <button (click)="like(pregunta)" class="btn btn-danger">like</button>
+    <button [hidden]="!liked" (click)="like(pregunta)" class="btn btn-danger">
+      <i class="fa fa-heart"></i> {{ likes }}
+    </button>
+    <button
+      [hidden]="liked"
+      (click)="like(pregunta)"
+      class="btn btn-light nolike"
+    >
+      <i class="fa fa-heart"></i> {{ likes }}
+    </button>
   </div>
 </div>
