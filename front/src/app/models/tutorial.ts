@@ -1,24 +1,24 @@
 export class Tutorial {
   constructor(
     _id = "",
-    contenido = "",
-    category = "",
     title = "",
-    likes = 0,
+    tutorial = "",
+    category = "",
+    likes = [],
     owner = ""
   ) {
     this._id = _id;
-    this.contenido = contenido;
-    this.category = category;
     this.title = title;
+    this.tutorial = tutorial;
+    this.category = category;
     this.likes = likes;
     this.owner = owner;
   }
 
   _id: string;
   title: string;
-  contenido: string;
+  tutorial: string;
   category: string;
-  likes: number;
+  likes: Array<string>;
   owner: string;
 }

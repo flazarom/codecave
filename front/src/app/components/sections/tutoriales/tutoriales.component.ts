@@ -1,5 +1,5 @@
-import { Tutorial } from "./../../../models/tutorial";
 import { Router } from "@angular/router";
+import { Tutorial } from "./../../../models/tutorial";
 import { TutorialService } from "./../../../services/tutorial.service";
 import { Component, OnInit } from "@angular/core";
 
@@ -9,6 +9,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./../../../app.component.css", "./tutoriales.component.css"]
 })
 export class TutorialesComponent implements OnInit {
+  cargando: boolean = true;
   constructor(
     public tutorialService: TutorialService,
     private router: Router
@@ -18,11 +19,11 @@ export class TutorialesComponent implements OnInit {
   pageSize = 10; //Cantidad de entradas que tendra la pagina
   collectionSize; //Longitud de la coleccion
 
-  ngOnInit(): void {
-    this.getTutorial();
+  ngOnInit() {
+    this.getTutoriales();
   }
 
-  getTutorial() {
+  getTutoriales() {
     this.tutorialService.getTutoriales().subscribe(res => {
       this.tutorialService.tutoriales = res as Tutorial[];
       this.collectionSize = this.tutorialService.tutoriales.length; // Lo guardo aparte porque sino en el html me trae problemas
@@ -31,12 +32,5 @@ export class TutorialesComponent implements OnInit {
 
   verTutorial(_id: String) {
     this.router.navigate(["tutoriales/" + _id]);
-  }
-
-  darLike(tutorial: Tutorial) {
-    tutorial.likes++;
-    this.tutorialService.putTutorial(tutorial).subscribe(res => {
-      this.getTutorial();
-    });
   }
 }

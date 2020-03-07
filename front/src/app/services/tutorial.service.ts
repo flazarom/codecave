@@ -1,16 +1,15 @@
-import { HttpClient } from '@angular/common/http';
-import { Tutorial } from './../models/tutorial';
-import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Tutorial } from "./../models/tutorial";
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class TutorialService {
-
   selectedTutorial: Tutorial;
   tutoriales: Tutorial[];
 
-  readonly URL_API = 'http://localhost:3000/api/tutoriales';
+  readonly URL_API = "http://localhost:3000/api/tutoriales";
 
   constructor(private http: HttpClient) {
     this.selectedTutorial = new Tutorial();
@@ -24,7 +23,7 @@ export class TutorialService {
     return this.http.get(this.URL_API);
   }
 
-  getTutorial(_id: string){
+  getTutorial(_id: string) {
     return this.http.get<Tutorial>(this.URL_API + `/${_id}`);
   }
 

@@ -31,6 +31,7 @@ export class PreguntasComponent implements OnInit {
   }
 
   verPregunta(_id: String) {
+    console.log("ver");
     this.router.navigate(["preguntas/" + _id]);
   }
 }

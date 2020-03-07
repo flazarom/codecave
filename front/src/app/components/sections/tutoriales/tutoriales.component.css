@@ -1,4 +1,8 @@
-.tutoriales{
+.tutorial-section {
+  float: left;
+}
+
+.tutorial {
   margin-left: auto;
   margin-right: auto;
 }

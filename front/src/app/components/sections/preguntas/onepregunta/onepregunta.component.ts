@@ -1,21 +1,18 @@
-import { auth } from "firebase/app";
+import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { User } from "./../../../../models/user";
 import { UserService } from "./../../../../services/user.service";
 import { AuthService } from "./../../../../services/auth.service";
-import { AngularFireAuth } from "@angular/fire/auth";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PreguntaService } from "./../../../../services/pregunta.service";
 import { Pregunta } from "./../../../../models/pregunta";
-import { Component, OnInit } from "@angular/core";
-import { FirebaseAuth } from "@angular/fire";
 
 @Component({
-  selector: "app-pregunta",
+  selector: "app-onepregunta",
   templateUrl: "./onepregunta.component.html",
   styleUrls: ["./onepregunta.component.css"]
 })
-export class PreguntaComponent implements OnInit {
+export class OnepreguntaComponent implements OnInit {
   pregunta: Pregunta = {
     _id: "",
     pregunta: "",

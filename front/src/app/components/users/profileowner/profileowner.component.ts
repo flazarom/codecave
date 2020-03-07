@@ -1,3 +1,5 @@
+import { Tutorial } from "./../../../models/tutorial";
+import { TutorialService } from "./../../../services/tutorial.service";
 import { Pregunta } from "./../../../models/pregunta";
 import { PreguntaService } from "./../../../services/pregunta.service";
 import { AngularFireAuth } from "@angular/fire/auth";
@@ -35,6 +37,15 @@ export class ProfileownerComponent implements OnInit {
     owner: ""
   };
 
+  tutorial: Tutorial = {
+    _id: "",
+    title: "",
+    category: "",
+    tutorial: "",
+    likes: [],
+    owner: ""
+  };
+
   medals = [];
   altMedallas = [];
   noMedals;
@@ -47,14 +58,19 @@ export class ProfileownerComponent implements OnInit {
     private preguntaService: PreguntaService,
     private fs: AngularFirestore,
     private router: Router,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private tutorialService: TutorialService
   ) {}
 
   ngOnInit(): void {
     this.loading();
     this.activeRoute.params.subscribe(res => {
-      this.getPregunta(res.id);
-      console.log(this.pregunta, " 1");
+      try {
+        this.getPregunta(res.id);
+      } catch {}
+      try {
+        this.getTutorial(res.id);
+      } catch {}
     });
   }
 
@@ -63,7 +79,13 @@ export class ProfileownerComponent implements OnInit {
   async getPregunta(_id: string) {
     await this.preguntaService.getPregunta(_id).subscribe(res => {
       this.pregunta = res as Pregunta;
-      console.log(this.pregunta, " 2");
+      this.getUser();
+    });
+  }
+
+  async getTutorial(_id: string) {
+    await this.tutorialService.getTutorial(_id).subscribe(res => {
+      this.tutorial = res as Tutorial;
       this.getUser();
     });
   }
@@ -75,11 +97,20 @@ export class ProfileownerComponent implements OnInit {
   }
 
   getUser() {
-    this.userService.getUser(this.pregunta.owner).subscribe(res => {
-      this.user = res as User;
-      this.medals = res.medals;
-      this.setAlts();
-    });
+    try {
+      this.userService.getUser(this.pregunta.owner).subscribe(res => {
+        this.user = res as User;
+        this.medals = res.medals;
+        this.setAlts();
+      });
+    } catch {}
+    try {
+      this.userService.getUser(this.tutorial.owner).subscribe(res => {
+        this.user = res as User;
+        this.medals = res.medals;
+        this.setAlts();
+      });
+    } catch {}
   }
 
   setAlts() {

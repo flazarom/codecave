@@ -1,3 +1,5 @@
+import { OnetutorialComponent } from "./components/sections/tutoriales/onetutorial/onetutorial.component";
+import { OnepreguntaComponent } from "./components/sections/preguntas/onepregunta/onepregunta.component";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
@@ -18,13 +20,11 @@ import { ProfileComponent } from "./components/users/profile/profile.component";
 import { RegisterComponent } from "./components/users/register/register.component";
 import { LoginComponent } from "./components/users/login/login.component";
 import { HttpClientModule } from "@angular/common/http";
-import { TutorialComponent } from "./components/getOne/tutorial/onetutorial.component";
-import { SnippetComponent } from "./components/getOne/snippet/onesnippet.component";
-import { PreguntaComponent } from "./components/getOne/pregunta/onepregunta.component";
+
 import { LiteprofileComponent } from "./components/users/liteprofile/liteprofile.component";
 import { ProfileownerComponent } from "./components/users/profileowner/profileowner.component";
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; //Importacion de bootstrap para angular NG-B. No es lo mismo que NGX son dos proyectos distintos
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap"; //Importacion de bootstrap para angular NG-B. No es lo mismo que NGX son dos proyectos distintos
 
 @NgModule({
   declarations: [
@@ -38,11 +38,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; //Importacion de bootstrap
     ProfileComponent,
     RegisterComponent,
     LoginComponent,
-    PreguntaComponent,
-    SnippetComponent,
-    TutorialComponent,
     LiteprofileComponent,
-    ProfileownerComponent
+    ProfileownerComponent,
+    OnepreguntaComponent,
+    OnetutorialComponent
   ],
   imports: [
     BrowserModule,
