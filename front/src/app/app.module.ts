@@ -24,7 +24,7 @@ import { PreguntaComponent } from "./components/getOne/pregunta/onepregunta.comp
 import { LiteprofileComponent } from "./components/users/liteprofile/liteprofile.component";
 import { ProfileownerComponent } from "./components/users/profileowner/profileowner.component";
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; //Importacion de bootstrap para angular NG-B. No es lo mismo que NGX son dos proyectos distintos
 
 @NgModule({
   declarations: [
@@ -60,6 +60,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ProfileownerComponent
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] //Declaracion de que la estructura de nuestro HTML sera personalizada.
 })
 export class AppModule {}

@@ -14,9 +14,9 @@ export class TutorialesComponent implements OnInit {
     private router: Router
   ) {}
 
-  page = 1;
-  pageSize = 10;
-  collectionSize;
+  page = 1;//Pagina en la cual inicia
+  pageSize = 10;//Cantidad de entradas que tendra la pagina
+  collectionSize; //Longitud de la coleccion
 
   ngOnInit(): void {
     this.getTutorial();
@@ -25,8 +25,7 @@ export class TutorialesComponent implements OnInit {
   getTutorial() {
     this.tutorialService.getTutoriales().subscribe(res => {
       this.tutorialService.tutoriales = res as Tutorial[];
-      this.collectionSize = this.tutorialService.tutoriales.length;
-      console.log(this.collectionSize);
+      this.collectionSize = this.tutorialService.tutoriales.length; // Lo guardo aparte porque sino en el html me trae problemas
     });
   }
 
