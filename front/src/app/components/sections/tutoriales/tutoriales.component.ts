@@ -14,6 +14,10 @@ export class TutorialesComponent implements OnInit {
     private router: Router
   ) {}
 
+  page = 1;
+  pageSize = 10;
+  collectionSize;
+
   ngOnInit(): void {
     this.getTutorial();
   }
@@ -21,6 +25,8 @@ export class TutorialesComponent implements OnInit {
   getTutorial() {
     this.tutorialService.getTutoriales().subscribe(res => {
       this.tutorialService.tutoriales = res as Tutorial[];
+      this.collectionSize = this.tutorialService.tutoriales.length;
+      console.log(this.collectionSize);
     });
   }
 

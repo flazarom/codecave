@@ -1,6 +1,6 @@
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -23,6 +23,8 @@ import { SnippetComponent } from "./components/getOne/snippet/onesnippet.compone
 import { PreguntaComponent } from "./components/getOne/pregunta/onepregunta.component";
 import { LiteprofileComponent } from "./components/users/liteprofile/liteprofile.component";
 import { ProfileownerComponent } from "./components/users/profileowner/profileowner.component";
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { ProfileownerComponent } from "./components/users/profileowner/profileow
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     AngularFireAuth,
@@ -56,6 +59,7 @@ import { ProfileownerComponent } from "./components/users/profileowner/profileow
     LiteprofileComponent,
     ProfileownerComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

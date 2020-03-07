@@ -18,7 +18,7 @@
 
 <div class="tutoriales col-lg-9 " >
   <div class="mt-2 col-sm-12 col-md-12 col-lg-12">
-    <div *ngFor="let tutorial of tutorialService.tutoriales">
+    <div *ngFor="let tutorial of tutorialService.tutoriales | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
       <div class="card bg-dark text-white mb-2 mt-2">
         <div class="card-header">
           {{ tutorial.title }}
@@ -41,5 +41,7 @@
         </div>
       </div>
     </div>
+    <ngb-pagination [collectionSize]="this.collectionSize" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
   </div>
 </div>
+
