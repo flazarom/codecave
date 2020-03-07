@@ -2,23 +2,23 @@ export class Pregunta {
   constructor(
     _id = "",
     pregunta = "",
-    categoria = "",
-    desarrollo = "",
+    category = "",
+    details = "",
     likes = [],
-    creador = ""
+    owner = ""
   ) {
     this._id = _id;
     this.pregunta = pregunta;
-    this.categoria = categoria;
-    this.desarrollo = desarrollo;
+    this.category = category;
+    this.details = details;
     this.likes = likes;
-    this.creador = creador;
+    this.owner = owner;
   }
 
   _id: string;
   pregunta: string;
-  categoria: string;
-  desarrollo: string;
+  category: string;
+  details: string;
   likes: string[];
-  creador: string;
+  owner: string;
 }

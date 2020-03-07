@@ -1,14 +1,9 @@
 <div class="container col-sm-12 com-md-12 col-lg-12 ">
   <div class="buscar mt-2">
     <div class="md-lg justify-content-center d-flex">
-      <nav class="navbar-dark bg-dark d-flex justify-content-center rounded col-lg-9 mt-2" >
+      <nav class="navbar-dark bg-dark d-flex justify-content-center rounded col-lg-9 mt-2">
         <form class="form-inline mt-3 mr-3 mb-3">
-          <input
-            class="form-control mr-sm-2 bg-dark"
-            type="search"
-            placeholder="Que necesitas?"
-            aria-label="Search"
-          />
+          <input class="form-control mr-sm-2 bg-dark" type="search" placeholder="Que necesitas?" aria-label="Search" />
           <button class="btn btn-info" type="submit">Buscar</button>
         </form>
       </nav>
@@ -16,9 +11,12 @@
   </div>
 </div>
 
-<div class="tutoriales col-lg-9 " >
+<div class="tutoriales col-lg-9 ">
   <div class="mt-2 col-sm-12 col-md-12 col-lg-12">
-    <div *ngFor="let tutorial of tutorialService.tutoriales | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+    <div *ngFor="
+        let tutorial of tutorialService.tutoriales
+          | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
+      ">
       <div class="card bg-dark text-white mb-2 mt-2">
         <div class="card-header">
           {{ tutorial.title }}
@@ -27,7 +25,7 @@
           <h5 class="card-title">Tutoriales</h5>
           <p class="card-text">
             Categoria:
-            {{ tutorial.categoria }}
+            {{ tutorial.category }}
           </p>
           <p>
             {{ tutorial.contenido }}
@@ -36,12 +34,14 @@
             {{ tutorial.likes }}
           </p>
           <a (click)="verTutorial(tutorial._id)" class="btn btn-info">Responder</a>
-          <button (click)="darLike(tutorial)" class="ml-2 btn btn-danger">like</button>
-          {{ tutorial.creador }}
+          <button (click)="darLike(tutorial)" class="ml-2 btn btn-danger">
+            like
+          </button>
+          {{ tutorial.owner }}
         </div>
       </div>
     </div>
-    <ngb-pagination [collectionSize]="this.collectionSize" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+    <ngb-pagination [collectionSize]="this.collectionSize" [(page)]="page" [maxSize]="5" [rotate]="true"
+      [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
   </div>
 </div>
-

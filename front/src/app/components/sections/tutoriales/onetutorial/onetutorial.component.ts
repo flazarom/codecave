@@ -1,6 +1,6 @@
 import { ActivatedRoute } from "@angular/router";
-import { TutorialService } from "./../../../services/tutorial.service";
-import { Tutorial } from "./../../../models/tutorial";
+import { TutorialService } from "./../../../../services/tutorial.service";
+import { Tutorial } from "./../../../../models/tutorial";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -11,11 +11,12 @@ import { Component, OnInit } from "@angular/core";
 export class TutorialComponent implements OnInit {
   tutorial: Tutorial = {
     _id: "",
-    contenido: "",
+    desarrollo: "",
     category: "",
-    title: "",
-    likes: 0,
-    owner: ""
+    titulo: "",
+    likes: [],
+    owner: "",
+    fecha: []
   };
 
   constructor(

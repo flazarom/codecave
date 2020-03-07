@@ -1,6 +1,6 @@
 import { ActivatedRoute } from "@angular/router";
-import { Snippet } from "./../../../models/snippet";
-import { SnippetService } from "./../../../services/snippet.service";
+import { Snippet } from "./../../../../models/snippet";
+import { SnippetService } from "./../../../../services/snippet.service";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -12,10 +12,11 @@ export class SnippetComponent implements OnInit {
   snippet: Snippet = {
     _id: "",
     desarrollo: "",
-    lenguaje: "",
+    category: "",
     titulo: "",
-    likes: 0,
-    owner: ""
+    likes: [],
+    owner: "",
+    fecha: []
   };
 
   constructor(

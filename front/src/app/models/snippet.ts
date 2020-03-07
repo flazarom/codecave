@@ -5,14 +5,14 @@ export class Snippet {
     lenguaje = "",
     desarrollo = "",
     likes = 0,
-    creador = ""
+    owner = ""
   ) {
     this._id = _id;
     this.lenguaje = lenguaje;
     this.titulo = titulo;
     this.desarrollo = desarrollo;
     this.likes = likes;
-    this.creador = creador;
+    this.owner = owner;
   }
 
   _id: string;
@@ -20,5 +20,5 @@ export class Snippet {
   lenguaje: string;
   desarrollo: string;
   likes: number;
-  creador: string;
+  owner: string;
 }

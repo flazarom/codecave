@@ -21,13 +21,11 @@ export class LiteprofileComponent implements OnInit {
     photoUrl: "",
     bio: "",
     web: "",
-    github: "",
-    gitlab: "",
-    bitbucket: "",
-    medallas: []
+    medals: [],
+    contact: []
   };
 
-  medallas = [];
+  medals = [];
   altMedallas = [];
   noMedals;
 
@@ -74,18 +72,18 @@ export class LiteprofileComponent implements OnInit {
       //   this.user.photoUrl =
       //     "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png";
       // }
-      this.medallas = res.medallas;
+      this.medals = res.medals;
       this.setAlts();
     });
   }
 
   setAlts() {
-    for (let i = 0; i < this.medallas.length; i++) {
-      this.medalService.getMedal(this.medallas[i]).subscribe(medal => {
+    for (let i = 0; i < this.medals.length; i++) {
+      this.medalService.getMedal(this.medals[i]).subscribe(medal => {
         this.altMedallas.push(medal);
       });
     }
-    if (this.medallas.length == 0) {
+    if (this.medals.length == 0) {
       this.noMedals = true;
     }
   }

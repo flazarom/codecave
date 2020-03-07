@@ -6,10 +6,8 @@ export class User {
     photoUrl = "",
     bio = "",
     web = "",
-    github = "",
-    gitlab = "",
-    bitbucket = "",
-    medallas = []
+    medals = [],
+    contact = []
   ) {
     this._id = _id;
     this.username = username;
@@ -17,10 +15,8 @@ export class User {
     this.photoUrl = photoUrl;
     this.bio = bio;
     this.web = web;
-    this.github = github;
-    this.gitlab = gitlab;
-    this.bitbucket = bitbucket;
-    this.medallas = medallas;
+    this.contact = contact;
+    this.medals = medals;
   }
 
   _id: string;
@@ -29,8 +25,6 @@ export class User {
   photoUrl: string;
   bio: string;
   web: string;
-  github: string;
-  gitlab: string;
-  bitbucket: string;
-  medallas: Array<string>;
+  medals: Array<string>;
+  contact: Array<string>;
 }

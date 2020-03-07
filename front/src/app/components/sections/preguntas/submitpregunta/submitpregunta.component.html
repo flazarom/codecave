@@ -1,0 +1,53 @@
+<div class="row d-flex justify-content-center">
+  <div class="card bg-dark text-white mb-2 mt-2 col-lg-4 col-md-6 col-sm-12 ">
+    <div class="card-body">
+      <h4 class="mb-3">Hacer una nueva pregunta</h4>
+      <form name="registerForm">
+        <div class="input-group mb-3">
+          <input (click)="checkUsername()" (change)="checkUsername()" formControlName="pregunta" name="pregunta"
+            type="text" class="form-control" placeholder="Pregunta" />
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><span class="fa fa-question"></span></span>
+          </div>
+        </div>
+
+        <div class="input-group mb-3 ">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><span class="fa fa-edit"></span></span>
+          </div>
+          <textarea formControlName="desarrollo" name="desarrollo" placeholder="Agrega más detalles"
+            class="form-control"></textarea>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Categoría</label>
+          </div>
+          <select formControlName="category" name="category" placeholder="Agrega más detalles" class="custom-select"
+            id="inputGroupSelect01">
+            <option selected>Elegir...</option>
+            <option value="1">C</option>
+            <option value="2">C++</option>
+            <option value="3">C#</option>
+            <option value="1">Go</option>
+            <option value="2">Java</option>
+            <option value="3">Javascript</option>
+            <option value="1">Kotlin</option>
+            <option value="2">Nodejs</option>
+            <option value="3">Perl</option>
+            <option value="3">PHP</option>
+            <option value="1">Python</option>
+            <option value="2">R</option>
+            <option value="3">Ruby</option>
+            <option value="3">Rust</option>
+            <option value="1">TypeScript</option>
+            <option value="2">Visual Basic .NET</option>
+          </select>
+        </div>
+      </form>
+      <button class="btn btn-info btn-block" type="submit" [disabled]="!usernameValid" (click)="submit()">
+        Guardar cambios
+      </button>
+    </div>
+  </div>
+</div>

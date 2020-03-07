@@ -1,12 +1,12 @@
 import { auth } from "firebase/app";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { User } from "./../../../models/user";
-import { UserService } from "./../../../services/user.service";
-import { AuthService } from "./../../../services/auth.service";
+import { User } from "./../../../../models/user";
+import { UserService } from "./../../../../services/user.service";
+import { AuthService } from "./../../../../services/auth.service";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { ActivatedRoute, Router } from "@angular/router";
-import { PreguntaService } from "./../../../services/pregunta.service";
-import { Pregunta } from "./../../../models/pregunta";
+import { PreguntaService } from "./../../../../services/pregunta.service";
+import { Pregunta } from "./../../../../models/pregunta";
 import { Component, OnInit } from "@angular/core";
 import { FirebaseAuth } from "@angular/fire";
 

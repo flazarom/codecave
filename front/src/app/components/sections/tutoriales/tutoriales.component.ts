@@ -14,8 +14,8 @@ export class TutorialesComponent implements OnInit {
     private router: Router
   ) {}
 
-  page = 1;//Pagina en la cual inicia
-  pageSize = 10;//Cantidad de entradas que tendra la pagina
+  page = 1; //Pagina en la cual inicia
+  pageSize = 10; //Cantidad de entradas que tendra la pagina
   collectionSize; //Longitud de la coleccion
 
   ngOnInit(): void {

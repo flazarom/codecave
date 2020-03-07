@@ -22,22 +22,20 @@ export class ProfileownerComponent implements OnInit {
     photoUrl: "",
     bio: "",
     web: "",
-    github: "",
-    gitlab: "",
-    bitbucket: "",
-    medallas: []
+    medals: [],
+    contact: []
   };
 
   pregunta: Pregunta = {
     _id: "",
-    desarrollo: "",
-    categoria: "",
     pregunta: "",
+    category: "",
+    details: "",
     likes: [],
-    creador: ""
+    owner: ""
   };
 
-  medallas = [];
+  medals = [];
   altMedallas = [];
   noMedals;
 
@@ -77,20 +75,20 @@ export class ProfileownerComponent implements OnInit {
   }
 
   getUser() {
-    this.userService.getUser(this.pregunta.creador).subscribe(res => {
+    this.userService.getUser(this.pregunta.owner).subscribe(res => {
       this.user = res as User;
-      this.medallas = res.medallas;
+      this.medals = res.medals;
       this.setAlts();
     });
   }
 
   setAlts() {
-    for (let i = 0; i < this.medallas.length; i++) {
-      this.medalService.getMedal(this.medallas[i]).subscribe(medal => {
+    for (let i = 0; i < this.medals.length; i++) {
+      this.medalService.getMedal(this.medals[i]).subscribe(medal => {
         this.altMedallas.push(medal);
       });
     }
-    if (this.medallas.length == 0) {
+    if (this.medals.length == 0) {
       this.noMedals = true;
     }
   }
