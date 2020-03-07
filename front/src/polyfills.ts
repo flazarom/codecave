@@ -1,5 +1,6 @@
 /***************************************************************************************************
  * Load `$localize` onto the global scope - used if i18n tags appear in Angular templates.
+ * En angular 9 es necesaria esta importacion para la importacion de esquemas que hago en App.Module
  */
 import '@angular/localize/init';
 /**
