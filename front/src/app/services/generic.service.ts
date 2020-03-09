@@ -27,6 +27,7 @@ export abstract class GenericService<E> {
     return this.http.post<E>(this.miUrl, entity);
   }
 
+  //Aca esta el problema, Necesitamos manejar todo con una sola entity
   put(id: string, entity: E) {
     return this.http.put<E>(this.miUrl + id, entity);
   }
