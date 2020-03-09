@@ -11,10 +11,8 @@ const userSchema = new Schema({
   photoUrl: { type: String, required: false },
   bio: { type: String, required: false },
   web: { type: String, required: false },
-  github: { type: String, required: false },
-  gitlab: { type: String, required: false },
-  bitbucket: { type: String, required: false },
-  medallas: { type: Array, required: false }
+  contact: { type: Array, required: false },
+  medals: { type: Array, required: false }
 });
 
 module.exports = mongoose.model("User", userSchema);

@@ -9,11 +9,11 @@ tutorialCtrl.getTutoriales = async (req, res, next) => {
 
 tutorialCtrl.createTutorial = async (req, res, next) => {
   const tutorial = new Tutorial({
-    titulo: req.body.titulo,
-    contenido: req.body.contenido,
-    categoria: req.body.categoria,
+    title: req.body.title,
+    tutorial: req.body.tutorial,
+    category: req.body.category,
     likes: req.body.likes,
-    creador: req.body.creador
+    owner: req.body.owner
   });
   await tutorial.save();
   res.json({ status: "Tutorial created" });
@@ -28,11 +28,11 @@ tutorialCtrl.getTutorial = async (req, res, next) => {
 tutorialCtrl.editTutorial = async (req, res, next) => {
   const { id } = req.params;
   const tutorial = {
-    titulo: req.body.titulo,
-    contenido: req.body.contenido,
-    categoria: req.body.categoria,
+    title: req.body.title,
+    tutorial: req.body.tutorial,
+    category: req.body.category,
     likes: req.body.likes,
-    creador: req.body.creador
+    owner: req.body.owner
   };
   await Tutorial.findByIdAndUpdate(id, { $set: tutorial }, { new: true });
   res.json({ status: "Tutorial Updated" });

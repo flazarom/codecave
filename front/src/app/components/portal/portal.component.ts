@@ -11,16 +11,11 @@ export class PortalComponent implements OnInit {
 
   oTutoriales = false;
   oPreguntas = false;
-  oSnippets = false;
   oSections = 0;
   empty = true;
 
   checkSections() {
-    if (
-      this.oTutoriales == false &&
-      this.oPreguntas == false &&
-      this.oSnippets == false
-    ) {
+    if (this.oTutoriales == false && this.oPreguntas == false) {
       this.empty = true;
     } else {
       this.empty = false;
@@ -30,7 +25,6 @@ export class PortalComponent implements OnInit {
   hideSections() {
     this.oTutoriales = false;
     this.oPreguntas = false;
-    this.oSnippets = false;
   }
 
   mostrarTutoriales() {
@@ -46,15 +40,6 @@ export class PortalComponent implements OnInit {
     if (this.oPreguntas == false) {
       this.hideSections();
       this.oPreguntas = true;
-    } else {
-      this.hideSections();
-    }
-    this.checkSections();
-  }
-  mostrarSnippets() {
-    if (this.oSnippets == false) {
-      this.hideSections();
-      this.oSnippets = true;
     } else {
       this.hideSections();
     }

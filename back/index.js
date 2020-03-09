@@ -14,7 +14,6 @@ app.use(express.json());
 // Routes
 app.use("/api/users", require("./routes/user.routes"));
 app.use("/api/preguntas", require("./routes/pregunta.routes"));
-app.use("/api/snippets", require("./routes/snippet.routes"));
 app.use("/api/tutoriales", require("./routes/tutorial.routes"));
 app.use("/api/medals", require("./routes/medal.routes"));
 
