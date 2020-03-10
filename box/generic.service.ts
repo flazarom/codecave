@@ -1,15 +1,14 @@
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export abstract class GenericService<E> {
-
   protected miUrl: string;
 
-  constructor(protected http: HttpClient) { }
+  constructor(protected http: HttpClient) {}
 
   getAll(): Observable<E[]> {
     return this.http.get<E[]>(this.miUrl);

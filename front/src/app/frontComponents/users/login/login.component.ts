@@ -1,22 +1,24 @@
-import { UserService } from "./../../../../services/user.service";
-import { User } from "./../../../../models/user";
+import { UserService } from "./../../../services/user.service";
+import { ProfileComponent } from "./../profile/profile.component";
+import { User } from "./../../../models/user";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { AuthService } from "./../../../../services/auth.service";
+import { AuthService } from "./../../../services/auth.service";
 import { Router, Data } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Component, OnInit } from "@angular/core";
 import { auth, firestore } from "firebase/app";
 @Component({
-  selector: "app-submitpregunta",
-  templateUrl: "./submitpregunta.component.html",
-  styleUrls: ["./submitpregunta.component.css"]
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./../../../app.component.css", "./login.component.css"]
 })
-export class SubmitpreguntaComponent implements OnInit {
+export class LoginComponent implements OnInit {
   constructor(
     public afAuth: AngularFireAuth,
     private router: Router,
     private authService: AuthService,
     private fs: AngularFirestore,
+    public profile: ProfileComponent,
     private userService: UserService
   ) {}
 
@@ -110,9 +112,7 @@ export class SubmitpreguntaComponent implements OnInit {
         photoUrl: document.forms["registerForm"]["photoUrl"].value,
         bio: document.forms["registerForm"]["bio"].value,
         web: document.forms["registerForm"]["web"].value,
-        github: document.forms["registerForm"]["github"].value,
-        gitlab: document.forms["registerForm"]["gitlab"].value,
-        bitbucket: document.forms["registerForm"]["bitbucket"].value,
+        contact: [],
         medals: []
       };
       let bioValue: string = document.forms["registerForm"]["bio"].value;
@@ -145,7 +145,7 @@ export class SubmitpreguntaComponent implements OnInit {
               // obtenemos el nombre de usuario y lo usamos para enviarlo a
               // la ruta de su perfil
               let username = doc.get("username");
-              this.router.navigate(["users", username]);
+              this.router.navigate([username]);
             })
             .catch(function(err) {
               console.log("err", err);

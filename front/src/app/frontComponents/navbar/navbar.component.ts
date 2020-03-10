@@ -67,7 +67,7 @@ export class NavbarComponent implements OnInit {
                 // obtenemos el nombre de usuario y lo usamos para enviarlo a
                 // la ruta de su perfil
                 let username = doc.get("username");
-                this.router.navigate(["users", username]);
+                this.router.navigate([username]);
               } else {
                 // si no existe en la coleccion de firebase, es xq aun no se registra,
                 // asi que le ponemos el formulario
@@ -98,7 +98,7 @@ export class NavbarComponent implements OnInit {
           .ref.get()
           .then(doc => {
             let username = doc.get("username");
-            this.router.navigate(["users", username]);
+            this.router.navigate([username]);
           });
       }
     });

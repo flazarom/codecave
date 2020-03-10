@@ -129,6 +129,6 @@ export class ProfileownerComponent implements OnInit {
   }
 
   gotoOwnerProfile() {
-    this.router.navigate(["users/", this.user.username]);
+    this.router.navigate([this.user.username]);
   }
 }
