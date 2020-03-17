@@ -9,112 +9,70 @@
 <div [hidden]="cargando">
   <div *ngIf="isLogged" class="perfil">
     <div class="container">
-      <div class="row mt-4 justify-content-center d-flex">
-        <div
-          class="profile-section profile col-sm-12 col-md-12 col-lg-12 justify-content-center d-flex"
-        >
-          <img
-            src="{{ user.photoUrl }}"
-            width="200px"
-            class="rounded-circle img-thumbnail img-profile"
-            alt="profile"
-          />
-        </div>
-        <div class="justify-content-center">
-          <div
-            class="profile-section details col-sm-12 col-md-12 col-lg-12 mt-2"
-          >
-            <b>
-              <h3>{{ user.username }}</h3>
-            </b>
-            <p>{{ user.email }}</p>
-            <p>{{ user.bio }}</p>
-            <div class="git"></div>
-          </div>
-        </div>
-        <div class="justify-content-center">
-          <div
-            class="profile-section medals col-sm-12 col-md-12 col-lg-12 mt-2"
-          >
-            <a
-              data-target="#medalModal"
-              data-toggle="modal"
-              class="MainNavText"
-              id="MainNavHelp"
-              href="#medalModal"
-            >
-              <b>
-                <h4 *ngIf="!noMedals">Reconocimientos</h4>
-              </b>
-              <div *ngFor="let medalla of medals" class="justify-content-start">
-                <img
-                  src="../../../../assets/images/medals/{{ medalla }}.png"
-                  class="medal mr-1"
-                />
-              </div>
-            </a>
-          </div>
-        </div>
+      <div class="profile-photo justify-content-center d-flex col-sm-12 col-md-6 col-lg-12 mt-2">
+        <img src="{{ user.photoUrl }}" class="rounded-circle img-thumbnail img-profile block" alt="profile" />
       </div>
 
-      <!-- modal  -->
-      <div class="container col-md-12">
-        <div class="row mt-4 justify-content-center d-flex">
-          <div
-            class="modal fade"
-            id="medalModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="medalModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog" role="document">
-              <div class="card w-100 medalModal">
-                <div class="card-body">
-                  <h5 class="card-title">Medallas</h5>
-                  <table class="table table-dark">
-                    <thead>
-                      <tr>
-                        <th scope="col">Medalla</th>
-                        <th scope="col">Título</th>
-                        <th scope="col">Descripción</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let medal of getMedals()">
-                        <th scope="row">
-                          <img
-                            src="../../../../assets/images/medals/{{
+      <div class="cursor-hand block justify-content-center d-flex">
+        <b>
+          <h3>{{ user.username }}</h3>
+        </b>
+      </div>
+      <div
+        class="profile-section medals justify-content-start col-sm-12 col-md-6 col-lg-12 mt-2 justify-content-center d-flex">
+        <a data-target="#medalModal" data-toggle="modal" class="MainNavText" id="MainNavHelp" href="#medalModal">
+          <div *ngFor="let medal of medals" class="medals">
+            <img src="../../../../assets/images/medals/{{ medal }}.png" class="medal mr-1 mb-1" />
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- modal  -->
+    <div class="container col-md-12">
+      <div class="row mt-4 justify-content-center d-flex">
+        <div class="modal fade" id="medalModal" tabindex="-1" role="dialog" aria-labelledby="medalModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="card w-100 medalModal">
+              <div class="card-body">
+                <h5 class="card-title">Medallas</h5>
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col">Medalla</th>
+                      <th scope="col">Título</th>
+                      <th scope="col">Descripción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let medal of getMedals()">
+                      <th scope="row">
+                        <img src="../../../../assets/images/medals/{{
                               medal.medalid
-                            }}.png"
-                          />
-                        </th>
-                        <td>
-                          <p class="mt-1">{{ medal.medalname }}</p>
-                        </td>
-                        <td>
-                          <p class="mt-1">{{ medal.medaldesc }}</p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <a href="#" class="btn btn-info">Cerrar</a>
+                            }}.png" />
+                      </th>
+                      <td>
+                        <p class="mt-1">{{ medal.medalname }}</p>
+                      </td>
+                      <td>
+                        <p class="mt-1">{{ medal.medaldesc }}</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+              <a href="#" class="btn btn-info">Cerrar</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div *ngIf="!isLogged" class="boton-login">
-    <button
-      type="button"
-      class="btn btn-google btn-block btn-lg mr-3"
-      (click)="loginGoogle()"
-    >
-      <span class="fa fa-google mr-4"></span>Ingresar con Google
-    </button>
-  </div>
+<div *ngIf="!isLogged" class="boton-login">
+  <button type="button" class="btn btn-google btn-block btn-lg mr-3" (click)="loginGoogle()">
+    <span class="fa fa-google mr-4"></span>Ingresar con Google
+  </button>
 </div>

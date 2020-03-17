@@ -9,40 +9,29 @@
 <div [hidden]="cargando">
   <div class="container">
     <div class="row mt-4 justify-content-center d-flex">
-      <div
-        class="profile-section profile col-sm-6 col-md-6 col-lg-4 justify-content-center d-flex"
-      >
-        <img
-          src="{{ user.photoUrl }}"
-          class="rounded-circle img-thumbnail img-profile"
-          alt="profile"
-        />
+      <div class="profile-section profile col-sm-6 col-md-6 col-lg-4 justify-content-center d-flex">
+        <img src="{{ user.photoUrl }}" class="rounded-circle img-thumbnail img-profile" alt="profile" />
       </div>
 
-      <div class="profile-section details col-sm-6 col-md-6 col-lg-4">
-        <b>
-          <h3>{{ user.username }}</h3>
-        </b>
-        <p>{{ user.email }}</p>
-        <p>{{ user.bio }}</p>
-        <div class="git"></div>
+      <div class="profile-section details col-sm-6 col-md-6 col-lg-4 justify-content-center d-flex">
+        <div class="center-content">
+          <b>
+            <h3>{{ user.username }}</h3>
+          </b>
+          <p>{{ user.email }}</p>
+          <div class="bio">
+            <p>{{ user.bio }}</p>
+          </div>
+          <div class="git"></div>
+        </div>
       </div>
-      <div class="profile-section medals col-sm-12 col-md-12 col-lg-4">
-        <a
-          data-target="#medalModal"
-          data-toggle="modal"
-          class="MainNavText"
-          id="MainNavHelp"
-          href="#medalModal"
-        >
+      <div class="profile-section medals col-sm-12 col-md-12 col-lg-4 justify-content-center d-flex">
+        <a data-target=" #medalModal" data-toggle="modal" class="MainNavText" id="MainNavHelp" href="#medalModal">
           <b>
             <h3 *ngIf="!noMedals">Reconocimientos</h3>
           </b>
           <div *ngFor="let medalla of medals" class="justify-content-start">
-            <img
-              src="../../../../assets/images/medals/{{ medalla }}.png"
-              class="medal mr-2"
-            />
+            <img src="../../../../assets/images/medals/{{ medalla }}.png" class="medal mr-2" />
           </div>
         </a>
       </div>
@@ -51,15 +40,9 @@
 
   <!-- modal  -->
   <div class="container col-md-12">
-    <div class="row mt-4 justify-content-center d-flex">
-      <div
-        class="modal fade"
-        id="medalModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="medalModalLabel"
-        aria-hidden="true"
-      >
+    <div class="row justify-content-center d-flex">
+      <div class="modal fade mt-4" id="medalModal" tabindex="-1" role="dialog" aria-labelledby="medalModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="card w-100 medalModal">
             <div class="card-body">
@@ -75,11 +58,9 @@
                 <tbody>
                   <tr *ngFor="let medal of getMedals()">
                     <th scope="row">
-                      <img
-                        src="../../../../assets/images/medals/{{
+                      <img src="../../../../assets/images/medals/{{
                           medal.medalid
-                        }}.png"
-                      />
+                        }}.png" />
                     </th>
                     <td>
                       <p class="mt-1">{{ medal.medalname }}</p>

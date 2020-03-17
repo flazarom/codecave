@@ -8,7 +8,6 @@
   margin-left: auto;
 }
 
-
 .medals {
   margin: auto;
   margin-left: auto;
@@ -37,9 +36,11 @@
   }
 }
 
-.tabla{
+.tabla {
   width: 100%;
   display: block;
 }
 
-
+.bio {
+  word-wrap: break-word;
+}

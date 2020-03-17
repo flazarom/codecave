@@ -1,10 +1,4 @@
-.profile-section {
-  margin: auto;
-  margin-left: auto;
-}
-
 .medals {
-  margin: auto;
   margin-left: auto;
 }
 
@@ -42,4 +36,10 @@
 
 .btn-google {
   background-color: #db4437;
+}
+
+.bio {
+  display: block;
+  width: 200px;
+  word-wrap: break-word;
 }

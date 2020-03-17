@@ -5,26 +5,16 @@
     </div>
 
     <div class="logged-buttons justify-content-center d-flex">
-      <button
-        class="btn btn-info mt-3 mb-3 "
-        *ngIf="!isLogged"
-        (click)="ingresar()"
-      >
-        Ingresar
+      <button class="btn btn-info mt-3 mb-3 " *ngIf="!isLogged" (click)="ingresar()">
+        _ingresar
       </button>
-      <button
-        class="btn btn-info btn-sm justify-content-between d-flex mt-3 mb-3 mr-3"
-        *ngIf="isLogged"
-        (click)="gotoProfile()"
-      >
-        Mi perfil
+      <button class="btn btn-info btn-sm justify-content-between d-flex mt-3 mb-3 mr-3" *ngIf="isLogged"
+        (click)="gotoProfile()">
+        _miPerfil
       </button>
-      <button
-        class="btn btn-danger btn-sm justify-content-between d-flex mt-3 mb-3"
-        *ngIf="isLogged"
-        (click)="logout()"
-      >
-        Salir
+      <button class="btn btn-danger btn-sm justify-content-between d-flex mt-3 mb-3" *ngIf="isLogged"
+        (click)="logout()">
+        _salir
       </button>
     </div>
   </nav>
@@ -35,42 +25,27 @@
     <div class="collapse" id="navbarToggleExternalContent">
       <div class="bg-dark p-4 ">
         <div class="logged-buttons justify-content-center d-flex">
-          <button
-            class="btn btn-info mt-3 mb-3 "
-            *ngIf="!isLogged"
-            (click)="ingresar()"
-          >
+          <button class="btn btn-info mt-3 mb-3 " *ngIf="!isLogged" (click)="ingresar()">
             Ingresar
           </button>
-          <button
-            class="btn btn-info btn-sm justify-content-between d-flex mt-3 mb-3 mr-3"
-            *ngIf="isLogged"
-            (click)="gotoProfile()"
-          >
-            Mi perfil
+          <button class="btn btn-info btn-sm justify-content-between d-flex mt-3 mb-3 mr-3" *ngIf="isLogged"
+            (click)="gotoProfile()">
+            _miPerfil
           </button>
-          <button
-            class="btn btn-danger btn-sm justify-content-between d-flex mt-3 mb-3"
-            *ngIf="isLogged"
-            (click)="logout()"
-          >
-            Salir
+          <button class="btn btn-danger btn-sm justify-content-between d-flex mt-3 mb-3" *ngIf="isLogged"
+            (click)="logout()">
+            _salir
           </button>
         </div>
       </div>
     </div>
     <nav class="navbar navbar-dark bg-dark justify-content-between d-flex">
-      <a class="nav-link navbar-brand">code(_c)ave</a>
+      <div class="cursor-hand" (click)="gotoHome()">
+        <a class="nav-link navbar-brand">code(_c)ave</a>
+      </div>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarToggleExternalContent"
-        aria-controls="navbarToggleExternalContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+        aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </nav>

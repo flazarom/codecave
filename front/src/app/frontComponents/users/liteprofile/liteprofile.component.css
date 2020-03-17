@@ -35,11 +35,15 @@
   }
 }
 
-.tabla{
+.tabla {
   width: 100%;
   display: block;
 }
 
 .btn-google {
-  background-color: #DB4437;
+  background-color: #db4437;
+}
+
+.bio {
+  word-wrap: break-word;
 }
